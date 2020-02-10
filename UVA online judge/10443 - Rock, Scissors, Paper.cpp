@@ -7,89 +7,63 @@ typedef pair<ll,ll> pll;
 //https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=9
 int main()
 {
-    string s;
-
-    while(getline(cin,s))
+    int t;
+    cin>>t;
+    map<char,char>a;
+    a['R']='S';
+    a['S']='P';
+    a['P']='R';
+    while(t--)
     {
-        if(s=="Game Over")break;
-        int sum=0;
-        vl pend(30,0);
-        int pos=0,aux=0,auxsum=0,roll=0;
-        for(int i=0;i<s.length();i+=2)
+        int r,c,n;
+        char x;
+        cin>>r>>c>>n;
+        vector<vector<char> >C(r,vector<char>(c,'a')),aux(r,vector<char>(c,'a'));
+        for(int i=0;i<r;i++)
         {
-            if(pos>=9)
+            for(int j=0;j<c;j++)
             {
-                if(isdigit(s[i]))
-                {
-                    if(aux==0)
-                    {
-
-                        auxsum+=s[i]-'0';
-                        sum+=pend[roll]*auxsum;
-                        aux++;
-                    }
-                    else
-                    {
-                        auxsum+=s[i]-'0';
-                        sum+=auxsum+(s[i]-'0')*pend[roll];
-                        aux=0;
-                    }
-                }
-                else if(s[i]=='X')
-                {
-                    sum+=10+10*pend[roll];
-                }
-                else
-                {
-                    sum+=10+(10-auxsum)*pend[roll];
-                    auxsum=0;
-                    aux=1;
-                    //pend[pos+1]++;
-                }
-
-
-                pos++;
+                cin>>x;
+                C[i][j]=x;
+                aux[i][j]=x;
             }
-            else{
-                if(aux==1)
-                {
-                   if(isdigit(s[i]))
-                    {
-                        auxsum+=s[i]-'0';
-                        sum+=(s[i]-'0')*pend[roll];
-                        sum+=auxsum;
-                        pos++;
-                    }
-                    else
-                    {
-                        sum+=10+(10-auxsum)*pend[roll];
-                        pend[roll+1]++;
-                        pos++;
-                    }
-                    aux=0;
-                    auxsum=0;
-                }
-                else{
-                    if(isdigit(s[i]))
-                    {
-                        auxsum+=s[i]-'0';
-                        sum+=auxsum*pend[roll];
-                        aux=1;
-                    }
-                    else
-                    {
-                        sum+=10+10*pend[roll];
-                        pend[roll+1]++;
-                        pend[roll+2]++;
-                        pos++;
-                    }
-                }
-            }
-            roll++;
         }
-        cout<<sum<<"\n";
+        for(int k=0;k<n;k++)
+        {
+            for(int i=0;i<r;i++)
+            {
+                for(int j=0;j<c;j++)
+                {
 
+                    if(i!=0&&a[C[i][j]]==C[i-1][j])
+                    {
+                        aux[i-1][j]=C[i][j];
+                    }
+                    if(j!=0&&a[C[i][j]]==C[i][j-1])
+                    {
+                        aux[i][j-1]=C[i][j];
+                    }
+                    if(i!=r-1&&a[C[i][j]]==C[i+1][j])
+                    {
+                        aux[i+1][j]=C[i][j];
+                    }
+                    if(j!=c-1&&a[C[i][j]]==C[i][j+1])
+                    {
+                        aux[i][j+1]=C[i][j];
+                    }
+                }
+            }
 
+            C=aux;
+        }
+        for(int i=0;i<r;i++)
+        {
+            for(int j=0;j<c;j++)
+            {
+                cout<<C[i][j];
+            }
+            cout<<"\n";
+        }
+        if(t!=0)cout<<"\n";
     }
-
 }
