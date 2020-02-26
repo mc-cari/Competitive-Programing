@@ -1,2 +1,2 @@
 # Problem's-solutions-repo
-<h1>hola</h1>
+<h2>hola</h2>
