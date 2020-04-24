@@ -12,6 +12,7 @@ typedef double db;
 #define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
 #define PI acos(-1.0) // important constant; alternative #define PI (2.0 * acos(0.0))
  
+
 int main() {
   int x, h, y;
   vector<pll>c;
@@ -34,15 +35,8 @@ int main() {
     }
     else
     {
-      multiset<ll>::iterator it = H.begin();
-      for (it; it!=H.end();it++)
-      {
-        if(*it==-c[i].second)
-        {
-          H.erase(it);
-          break;
-        }
-      }
+      multiset<ll>::iterator it = H.find(-c[i].second);
+      H.erase(H.find(-c[i].second));
     }
     if(i==c.size()-1)
     {
