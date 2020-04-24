@@ -1,61 +1,64 @@
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
-//https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=41
+typedef long long ll;
+typedef vector<ll> vl;
+typedef pair<ll,ll> pll;
+typedef double db;
+//https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=9
+#define INF 1e8
+#define EPS 1e-9
+#define ALL(x) x.begin() , x.end()
+#define ALLR(x) x.rbegin() , x.rend()
+#define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
+#define PI acos(-1.0) // important constant; alternative #define PI (2.0 * acos(0.0))
+ 
 int main() {
-    ios_base::sync_with_stdio(0);
-    cin.tie(0);
-    map<int,int>c;
-    map<int,int>::reverse_iterator it;
-    vector<pair<int,int> >d;
-    int l,r,h;
-    while(cin>>l)
+  int x, h, y;
+  vector<pll>c;
+  vl ans;
+  multiset<ll>H;
+  while(cin>>x>>h>>y)
+  {
+    c.push_back({x,h});
+    c.push_back({y,-h});
+  }
+  sort(ALL(c));
+  H.insert(0);
+  bool o=0;
+  ll maxi=-1;
+  for(int i=0;i<c.size();i++)
+  {
+    if(c[i].second>0)
     {
-        cin>>h>>r;
-        d.push_back(make_pair(l,h));
-        d.push_back(make_pair(r,-h));
+      H.insert(c[i].second);
     }
-    sort(d.begin(),d.end());
-    int maxi=-1,prev=d[0].first,o=1;
-    for(int i=0;i<d.size();i++)
+    else
     {
-        h=d[i].second;
-        if(h>0)
+      multiset<ll>::iterator it = H.begin();
+      for (it; it!=H.end();it++)
+      {
+        if(*it==-c[i].second)
         {
-            c[h]++;
-            if(maxi<h)
-            {
-                maxi=h;
-                o=1;
-            }
+          H.erase(it);
+          break;
         }
-        else
-        {
-            h=-h;
-            c[h]--;
-            if(c[maxi]==0)
-            {
-
-                maxi=0;
-                for(it=c.rbegin();it!=c.rend();it++)
-                {
-                    if((*it).second!=0)
-                    {
-                        maxi=(*it).first;
-                        break;
-                    }
-                }
-                o=1;
-            }
-        }
-        if(i==d.size()-1)
-        {
-            cout<<d[d.size()-1].first<<" "<<maxi<<"\n";
-        }
-        else if(d[i+1].first!=d[i].first&&o)
-        {
-            cout<<d[i].first<<" "<<maxi<<" ";
-            o=0;
-        }
+      }
     }
-
+    if(i==c.size()-1)
+    {
+      ans.push_back(c[i].first);
+      ans.push_back((*H.rbegin()));
+    }
+    else if(c[i].first!=c[i+1].first && (ans.empty()||ans.back()!=*H.rbegin()))
+    {
+      ans.push_back(c[i].first);
+      ans.push_back(*H.rbegin());
+    }
+  }
+  for(int i= 0; i < ans.size();i++)
+  {
+    cout<<ans[i];
+    i < ans.size() - 1 ? cout<<" " : cout<<"\n";
+  }
+  return 0;
 }
