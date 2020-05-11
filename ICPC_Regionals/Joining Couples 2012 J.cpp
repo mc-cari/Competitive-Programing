@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-//https://vjudge.net/contest/335209#status/McLight/T/0/
+//https://www.urionlinejudge.com.br/judge/es/problems/view/1302
 typedef long long int ll;
 typedef vector<ll> vl;
 typedef pair<ll,ll> pll;
