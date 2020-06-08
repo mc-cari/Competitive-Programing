@@ -13,7 +13,7 @@ typedef double db;
 double DEG_to_RAD(double d) { return d*PI / 180.0; }
 double RAD_to_DEG(double r) { return r*180.0 / PI; }
  
- 
+ //https://www.urionlinejudge.com.br/judge/es/problems/view/1439
  
 int32_t main() {
 
