@@ -17,19 +17,19 @@ vl num = {4,7,44,47,74,77,444,447,474,477,744,747,774,777, 7777, 7774, 7747, 747
 
 struct SegmentTree
 {
-	vector<ll> Lazy, in;
+  vector<ll> Lazy, in;
   vector<pll> ST;
-	ll N;
+  ll N;
   ll Nul = 0;
-	SegmentTree(vector<pll>& A)
-	{
-		N = A.size();
-		ST.resize(4*N+5,{0,0});
-		Lazy.resize(4*N+5,Nul);
+  SegmentTree(vector<pll>& A)
+  {
+    N = A.size();
+    ST.resize(4*N+5,{0,0});
+    Lazy.resize(4*N+5,Nul);
     in.resize(N+5, 0);
 
-		build(1,0,N-1, A);
-	}
+    build(1,0,N-1, A);
+  }
   void up(ll n, ll l, ll r)
   {
       ST[n].first -= Lazy[n];
@@ -40,52 +40,52 @@ struct SegmentTree
       }
       Lazy[n] = Nul;
   }
-	void build(ll n, ll l, ll r, vector<pll>& A)
-	{
+  void build(ll n, ll l, ll r, vector<pll>& A)
+  {
 
-		if(l == r)
-		{
-			ST[n] = A[r];
-			return;
-		}
+    if(l == r)
+    {
+	ST[n] = A[r];
+	return;
+    }
 
-		build(2*n,l,(l+r)/2, A);
-		build(2*n+1,(l+r)/2+1,r, A);
+    build(2*n,l,(l+r)/2, A);
+    build(2*n+1,(l+r)/2+1,r, A);
 
     if(ST[2*n].first == ST[2*n+1].first) ST[n] = {ST[2*n].first, ST[2*n].second + ST[2*n+1].second};
     else ST[n] = min(ST[2*n],ST[2*n+1]);
-	}
+  }
 
-	ll query(ll i, ll j)
-	{
-		return query(1,0,N-1,i,j);
-	}
+  ll query(ll i, ll j)
+  {
+    return query(1,0,N-1,i,j);
+  }
 
 
-	ll query(ll n, ll l, ll r, ll i, ll j)
-	{
+  ll query(ll n, ll l, ll r, ll i, ll j)
+  {
 
-		if(r < i || j < l ) return Nul;
+    if(r < i || j < l ) return Nul;
 
     up(n,l,r);
-		if(i <= l && r <= j) 
+    if(i <= l && r <= j) 
     {
       if(ST[n].first == 0) return ST[n].second;
       return 0;
     }
 
-		return (query(2*n,l,(l+r)/2,i,j)+query(2*n+1,(l+r)/2+1,r,i,j));
-	}
+    return (query(2*n,l,(l+r)/2,i,j)+query(2*n+1,(l+r)/2+1,r,i,j));
+  }
 
-	void update(ll i,ll j, ll v)
-	{
-		return update(1,0,N-1,i,j,v);
-	}
+  void update(ll i,ll j, ll v)
+  {
+    return update(1,0,N-1,i,j,v);
+  }
 
-	void update(ll n, ll l, ll r, ll i, ll j, ll v)
-	{
+  void update(ll n, ll l, ll r, ll i, ll j, ll v)
+  {
 
-		if(l > j || r < i)
+    if(l > j || r < i)
     {
         up(n,l,r);
         return;
@@ -99,16 +99,16 @@ struct SegmentTree
     }
     up(n,l,r);
 
-		update(2*n,l,(l+r)/2,i,j,v);
-		update(2*n+1,(l+r)/2+1,r,i,j,v);
+    update(2*n,l,(l+r)/2,i,j,v);
+    update(2*n+1,(l+r)/2+1,r,i,j,v);
 
 
-		if(ST[2*n].first == ST[2*n+1].first) ST[n] = {ST[2*n].first, ST[2*n].second + ST[2*n+1].second};
+    if(ST[2*n].first == ST[2*n+1].first) ST[n] = {ST[2*n].first, ST[2*n].second + ST[2*n+1].second};
     else ST[n] = min(ST[2*n],ST[2*n+1]);
-	}
+  }
 
   void normalize(ll n, ll l, ll r)
-	{
+  {
 
      up(n,l,r);
 
@@ -118,9 +118,9 @@ struct SegmentTree
     }
 
   
-		if(l == r)
-		{
-			while(ST[n].first < 0)
+    if(l == r)
+    {
+      while(ST[n].first < 0)
       {
         in[l]++;
         if(in[l] == num.size())
@@ -128,20 +128,20 @@ struct SegmentTree
         else
           ST[n].first += num[in[l]] - num[in[l]-1];
       }
-			return;
-		}
+      return;
+    }
 
     up(n,l,r);
 
-		normalize(2*n,l,(l+r)/2);
-		normalize(2*n+1,(l+r)/2+1,r);
+    normalize(2*n,l,(l+r)/2);
+    normalize(2*n+1,(l+r)/2+1,r);
 
     up(n,l,r);
 
     if(ST[2*n].first == ST[2*n+1].first) ST[n] = {ST[2*n].first, ST[2*n].second + ST[2*n+1].second};
     else ST[n] = min(ST[2*n],ST[2*n+1]);
 
-	}
+  }
 };
 
 int main(){
