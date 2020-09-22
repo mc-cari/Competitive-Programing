@@ -131,3 +131,46 @@ int main()
   }
   cout << fixed << setprecision(12) << value(angg((l + r) / 2.0)) << "\n";
 }
+
+// bug, cambio sentido rotación instantaneo
+// al final solo se elige 1 sentido de giro final
+/*
+db value(db ang)
+{
+  db R = v / w;
+  db r_ang = ang;
+  if (ang >= 0)
+  {
+    r_ang += PI / 2.0;
+  }
+  else
+  {
+    r_ang -= PI / 2.0;
+  }
+  
+  point r(cos(r_ang) * R, sin(r_ang) * R);
+  point a1(0, 0);
+  if(dist(a2, r) < R)
+  {
+    return INT_MAX;
+  }
+  db tan = sqrt(dist_sq(a2, r) - R * R);
+
+  db ang2 = acos(R / dist(a2, r));
+  
+  db ans = anglet(a1, r, a2);
+  if(ang >= 0)
+  {
+    ans -= ang2;
+  }
+  else
+  {
+    ans += ang2;
+  }
+  while(ans < -EPS) ans += 2*PI;
+  while (ans > 2*PI - EPS) ans -= 2*PI;
+  //cout<<fixed << setprecision(5)<<ang<<" "<<ans<<" "<<tan<<"\n";
+  //cout << abs(ang) / w <<" "<< ans / w <<" "<< tan / v<<endl;
+  return (abs(ang) + ans) / w + tan / v;
+}
+*/
