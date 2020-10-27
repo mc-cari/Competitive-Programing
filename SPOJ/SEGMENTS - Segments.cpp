@@ -12,8 +12,6 @@ typedef long double db;
 #define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
 const double PI = acos(-1.0);
 
-#define rep(i, n) for (int i = 0; i < (int)n; i++)
-
 //https://www.spoj.com/problems/SEGMENTS/
 
 int main()
