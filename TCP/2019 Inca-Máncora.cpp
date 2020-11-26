@@ -15,6 +15,15 @@ const db PI = acos(-1.0);
 
 //https://codeforces.com/group/YjFmW2O15Q/contest/102363/attachments
 
+struct camb {  
+    ll k, a, b;
+
+};
+struct quer{
+  ll x, y;
+};
+
+
 int main()
 {
 
