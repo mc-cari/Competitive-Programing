@@ -12,71 +12,67 @@ typedef double db;
 #define PI acos(-1.0) 
 
 
-ll block; 
+ll block;
 vl ans;
 vl elements(1e6+2, 0);
-
+// F = add-remove
+// O((N+Q)F√N)
 struct Query 
 { 
     int L, R, id; 
 }; 
 
-bool compare(Query x, Query y) 
-{ 
-    if (x.L/block != y.L/block) 
-        return x.L/block < y.L/block; 
-  
-    return x.R < y.R; 
-} 
+
+bool cmp(Query a, Query b){
+    if(a.L / block != b.L / block)
+        return a.L < b.L;
+    return a.L / block % 2 ? a.R < b.R : a.R > b.R;
+}
 ll add(vl& a, int id)
 {
+    //cout<<id<<endl;
     return (2 * elements[a[id]] + 1) * a[id];
 }
 ll remove(vl& a, int id)
 {
     return (-2 * elements[a[id]] + 1) * a[id];
 }
-  
 void queryResults(vl& a, vector<Query>& q) 
 { 
 
     block = (int)sqrt(a.size()); 
     ans.assign(q.size(),0);
 
-    sort(ALL(q), compare); 
+    sort(ALL(q), cmp); 
    
-    ll currL = 0, currR = 0; 
-    ll currans = 0; 
+    ll currL = 0, currR = 0, currans = 0; 
   
     for (int i=0; i<q.size(); i++) 
     { 
         // L and R values of current range 
         int L = q[i].L, R = q[i].R; 
   
-        while (currL < L) 
-        { 
-            currans += remove(a, currL);
-            elements[a[currL]]--;
-            currL++; 
-        } 
-        while (currL > L) 
-        { 
-            currans += add(a, currL-1);
-            elements[a[currL-1]]++;
-            currL--; 
-        } 
-        while (currR <= R) 
-        { 
+        while (currR <= R) {
             currans += add(a, currR);
             elements[a[currR]]++;
             currR++; 
-        } 
-        while (currR > R+1) 
-        { 
-            currans += remove(a, currR-1); 
+        }
+        while (currL > L){ 
+            currans += add(a, currL-1);
+            elements[a[currL-1]]++;
+            currL--;  
+        }
+        while (currR > R+1) {
+            currans += remove(a, currR-1);
             elements[a[currR-1]]--;
             currR--; 
-        } 
+        }
+        while (currL < L) 
+        {
+            currans += remove(a, currL);
+            elements[a[currL]]--;
+            currL++; 
+        }
   
         ans[q[i].id] = currans;
     } 
