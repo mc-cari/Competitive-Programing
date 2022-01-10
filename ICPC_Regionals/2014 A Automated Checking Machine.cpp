@@ -9,7 +9,7 @@ typedef pair<ll,ll> pll;
 
 int main()
 {
-    int a,b,c,d,e,A,B,C,D,E;
+    int a, b, c, d, e, A, B, C, D, E;
     while(cin>>a>>b>>c>>d>>e>>A>>B>>C>>D>>E)
     {
         if(a!=A&&b!=B&&c!=C&&d!=D&&e!=E)
