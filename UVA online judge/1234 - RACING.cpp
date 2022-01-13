@@ -14,6 +14,7 @@ typedef double db;
 #define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
 #define PI acos(-1.0)
 
+//https://onlinejudge.org/index.php?option=com_onlinejudge&Itemid=8&page=show_problem&problem=3675
 
 struct UF{
     vl p, r;
