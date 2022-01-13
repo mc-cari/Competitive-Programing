@@ -105,14 +105,7 @@ void count_routes(int n, int m, int p, int R[][2], int q, int G[])
         else nex[i + n] = u;
     }
 
-    
     SparseTable SP(nex, 2 * n);
-    for(int i = 0; i < n; i++)
-    {
-        //SP.op(1, i);
-        //cout << i << " " << SP.op(1, i) << " " << SP.op(1, i + n) << endl;
-    }
-
 
     for(int j = 0; j < q; j++)
     {
@@ -125,9 +118,7 @@ void count_routes(int n, int m, int p, int R[][2], int q, int G[])
             if(pos == p) ans++;
         }
         answer(ans);
-        //cout << ans;
-        //if(j < q-1) cout << " ";
-        //else cout << "\n";
+
     }
 
 }
