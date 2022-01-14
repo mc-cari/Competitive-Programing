@@ -61,7 +61,6 @@ int main() {
     cin.tie(0);
     cout.tie(0);
 
-    
     ll t;
     cin >> t;
     while(t--)
@@ -84,7 +83,6 @@ int main() {
             
         }
 
-        
         sort(ALLR(d));
         UF uf(n);
         ll ans = 0;
@@ -99,20 +97,15 @@ int main() {
                 ll s = uf.find(x); 
 
                 ll out = 0, in = INF;
-                //cout << x+1 << " " << y+1 << " " << uf.tam[s] << " " << s+1 << endl;
-                
-                
+
                 for(int j = 0; j < n; j++)
                 {
                     ll rep = uf.find(j);
                     mini[s][j] = mini[j][s] = min(min(mini[x][j], mini[y][j]), mini[s][j]);
                     maxi[s][j] = maxi[j][s] = max(max(maxi[x][j], maxi[y][j]), maxi[s][j]);
-                    //cout << j << "j " << mini[x][rep] << " " << maxi[x][rep] << " "<<(uf.find(j) != s) << endl;
                     if(uf.find(j) != s) out = max(out, maxi[s][j]);
                     else in = min(in, mini[s][j]);
                 }
-                //cout << out << "*" << in<< endl;
-                 //cout << maxi[1][2] <<"**"<< endl;
                 if(out < in) ans += uf.tam[s];
             }
         }
