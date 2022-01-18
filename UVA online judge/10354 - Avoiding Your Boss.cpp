@@ -57,8 +57,8 @@ int main() {
             tie(x, y) = it;
             if(g[BH][x] + g[x][y] + g[y][OF] == g[BH][OF])
             {
-                //g2[x][y] = INF;
-                //g2[y][x] = INF;
+                g2[x][y] = INF;
+                g2[y][x] = INF;
             }
                
         }
