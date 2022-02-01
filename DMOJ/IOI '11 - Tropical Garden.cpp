@@ -145,37 +145,25 @@ void count_routes(int n, int m, int p, int R[][2], int q, int G[])
         
         for(int i = 0; i < n; i++)
         {
-            if(cycle1)
+            if(cycle1 && dis[i] <= k && (k - dis[i]) % tam1 == 0)
             {
-                if(dis[i] <= k && (k - dis[i]) % tam1 == 0)
-                {
-                    ans++;
-                    continue;
-                }
+                ans++;
+                continue;
             }
-            else
+            else if(dis[i] == k)
             {
-                if(dis[i] == k)
-                {
-                    ans++;
-                    continue;
-                }
+                ans++;
+                continue;
             }
-            if(cycle2)
+            if(cycle2 && dis2[i] <= k && (k - dis2[i]) % tam2 == 0)
             {
-                if(dis2[i] <= k && (k - dis2[i]) % tam2 == 0)
-                {
-                    ans++;
-                    continue;
-                }
+                ans++;
+                continue;
             }
-            else
+            else if(dis2[i] == k)
             {
-                if(dis2[i] == k)
-                {
-                    ans++;
-                    continue;
-                }
+                ans++;
+                continue;
             }
         }
         answer(ans);
@@ -193,16 +181,12 @@ int main() {
     cin >> n >> m >> p;
     int R[m][2];
     for(int i = 0; i < m; i++)
-    {
         cin >> R[i][0] >> R[i][1];
-    }
     ll q;
     cin >> q;
     int G[q];
     for(int i = 0; i < q; i++)
-    {
         cin >> G[i];
-    }
     count_routes(n, m, p, R, q, G);
     
 
