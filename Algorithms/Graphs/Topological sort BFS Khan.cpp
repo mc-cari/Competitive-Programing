@@ -85,7 +85,6 @@ int main()
             if(--indegree[it] == 0)
                 q.push(it);
         }
-
     }
 
 

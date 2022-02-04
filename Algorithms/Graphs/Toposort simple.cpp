@@ -12,7 +12,7 @@ void dfs(int t)
     v[t] = 1;
     for(auto it : g[t]){
 
-        if(!v[it)
+        if(!v[it])
             dfs(it);
     }
     s.push_back(t);
