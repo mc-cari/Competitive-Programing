@@ -38,6 +38,10 @@ struct UF{
 ll maxlog2(ll x){
     return (63 - __builtin_clzll(x));
 }
+
+// To minimize diameter, connect the center of the diameter of two trees
+// min(diam1, diam2, dia1+dia2+1)  dia1 = diam1/2  (if diameter odd)+ 1
+
 struct SparseTableLCA
 {
     ll maxlg;
