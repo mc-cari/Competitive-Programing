@@ -17,11 +17,11 @@ typedef double db;
 int main() {
 
 	ios::sync_with_stdio(false);
-    cin.tie(0);
-    cout.tie(0);
+	cin.tie(0);
+	cout.tie(0);
 
-    // Code here
-    
-    cerr << "\nTime elapsed: " << 1000 * clock() / CLOCKS_PER_SEC << "ms\n";
-    return 0;
+	// Code here
+
+	cerr << "\nTime elapsed: " << 1000 * clock() / CLOCKS_PER_SEC << "ms\n";
+	return 0;
 }
