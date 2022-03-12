@@ -3,7 +3,7 @@ using namespace std;
 
 struct UF{
     vl p, r;
-    UF(ll n)//cambiar cuando no es int
+    UF(ll n)
     {
         for(ll i = 0; i < n; i++)
         {
