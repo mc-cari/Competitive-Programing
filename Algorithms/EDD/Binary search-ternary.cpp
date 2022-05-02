@@ -5,7 +5,7 @@ using namespace std;
 log(valor maximo/precision)/log(2)
                             /log(3/2) //para ternaria
 
-ll l = 0 ,r = n-1 ,p , res = -1;
+ll l = 0, r = n-1, p, res = -1;
 while(l <= r)
 {
     p = (l + r) / 2;

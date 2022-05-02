@@ -16,6 +16,7 @@ typedef double db;
 
 // From https://github.com/stevenhalim/cpbook-code/blob/master/ch4/mcbm.cpp
 
+// Works with 3-pairing or more (Perfect MCBM)
 
 vl match, vis;                                   // global variables
 vector<vl> g;
