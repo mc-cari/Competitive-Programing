@@ -60,3 +60,11 @@ int joseph(ll n)
 //combinar(a, b) = a*b
 
 // x >= y -> x mod y < x/2  counting decimals
+
+/*Para un arbol de tamaño N, solo hay un arbol para cada divisor(N)
+de tamaño divisor(N) que lo puede armar solo consigo mismo
+
+Para hashear un arbol se usan parentesis, el hash es distinto para cada root,
+hay que ordenar los hijos antes de hashear
+
+*/
