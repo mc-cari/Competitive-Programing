@@ -1,10 +1,5 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long  ll;
-typedef vector<ll> vl;
-typedef pair<ll,ll> pll;
-typedef vector<pll> vp;
-#define INF 1e12
+#include "../Header.cpp"
+
 struct UF{
     vector<ll>p,r;
     ll conjuntos=0;

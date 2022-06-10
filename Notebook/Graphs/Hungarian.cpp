@@ -1,18 +1,4 @@
-#include<bits/stdc++.h>
-#pragma GCC optimize("Ofast")
-using namespace std;
-typedef long long ll;
-typedef unsigned long long ull;
-typedef vector<ll> vl;
-typedef pair<ll,ll> pll;
-typedef vector<pll> vp;
-typedef int db;
-#define INF 1e17
-#define EPS 1e-7
-#define ALL(x) x.begin() , x.end()
-#define ALLR(x) x.rbegin() , x.rend()
-#define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
-#define PI acos(-1.0)
+#include "../Header.cpp"
 
 // From https://docs.google.com/document/d/1rcex_saP4tExbbU62qGUjR3eenxOh-50i9Y45WtHkc4/edit
 

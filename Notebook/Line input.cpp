@@ -1,8 +1,8 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include "Header.cpp"
+
 int main()
 {
-    //entrega strings
+    // save strings
     string line, token;
     getline(cin, line);
     stringstream ss(line);

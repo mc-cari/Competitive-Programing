@@ -1,10 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
-typedef int  ll;
-typedef vector<ll> vl;
-typedef pair<ll,ll> pll;
-#define INF 1e9
-
+#include "../Header.cpp"
 
 int main()
 {

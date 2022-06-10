@@ -1,5 +1,5 @@
 /* A Naive recursive implementation of LCS problem */
-#include<bits/stdc++.h>
+#include "../Header.cpp"
 
 int max(int a, int b);
 

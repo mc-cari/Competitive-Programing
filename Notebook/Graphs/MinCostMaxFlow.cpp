@@ -1,13 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-typedef vector<ll> vl;
-typedef pair<ll,ll> pll;
-typedef double db;
-#define EPS 1e-9
-#define ALL(x) x.begin() , x.end()
-#define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
-#define PI acos(-1.0) 
+#include "../Header.cpp"
 
 struct Edge
 {

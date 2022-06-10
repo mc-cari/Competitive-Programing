@@ -1,23 +1,14 @@
-#include<bits/stdc++.h>
+#include "../Header.cpp"
+
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 using namespace __gnu_pbds;
-using namespace std;
+
 
 // use less_equal for multiset
 template <typename T, typename Comparator = less<T>>
 using ordered_set = tree<T, null_type, Comparator, rb_tree_tag,
                          tree_order_statistics_node_update>;
-typedef long long ll;
-typedef vector<ll> vl;
-typedef pair<ll,ll> pll;
-typedef double db;
-#define INF 1e10
-#define EPS 1e-9
-#define ALL(x) x.begin() , x.end()
-#define ALLR(x) x.rbegin() , x.rend()
-#define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
-#define PI acos(-1.0) 
 
  
 // order_of_key(T x)

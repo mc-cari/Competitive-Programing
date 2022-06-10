@@ -1,9 +1,7 @@
 
 /* Dynamic Programming solution to find length of the
    longest common substring */
-#include<iostream>
-#include<string.h>
-using namespace std;
+#include "../Header.cpp"
 
 // A utility function to find maximum of two integers
 int max(int a, int b)

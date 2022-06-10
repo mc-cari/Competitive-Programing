@@ -1,13 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-typedef vector<ll> vl;
-typedef pair<ll,ll> pll;
-#define INF 1e12
-double pi = 2 * acos(0.0);
-#define ALL(x) x.begin() , x.end()
-#define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
-
+#include "../Header.cpp"
 
 vl depht, v, nodes;
 vl ind;
@@ -17,12 +8,12 @@ void dfs(int t)
     if(!v[t]){
         nodes.push_back(t);
         v[t]=1;
-        for(ll i=0;i<g[t].size();i++){
+        for(auto it : g[t]){
 
-            if(!v[g[t][i]])
+            if(!v[it])
             {
-              depht[g[t][i]]=depht[t]+1;
-              dfs(g[t][i]);
+              depht[it]=depht[t]+1;
+              dfs(it);
             }
             
         }
@@ -50,11 +41,11 @@ int main()
     q.push(inicio);
     while(!q.empty()){
 
-        ll t=q.top();
+        ll t = q.top();
         q.pop();
         if(v[t]) continue;
 
-        v[t]=1;
+        v[t] = 1;
         for(auto it : g[t]){
 
             if(!v[it])

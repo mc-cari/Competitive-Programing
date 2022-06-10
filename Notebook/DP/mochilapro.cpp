@@ -1,5 +1,5 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include "../Header.cpp"
+
 int usados=0,espacio_usado;
 int knapSack(int W, int wt[], int val[], int n)
 {

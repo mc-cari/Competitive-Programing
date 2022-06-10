@@ -1,17 +1,4 @@
-#include<bits/stdc++.h>
-#pragma GCC optimize("Ofast")
-using namespace std;
-typedef long long ll;
-typedef vector<ll> vl;
-typedef pair<ll,ll> pll;
-typedef vector<pll> vp;
-typedef long double db;
-#define INF 1e15
-#define EPS 1e-9
-#define ALL(x) x.begin() , x.end()
-#define ALLR(x) x.rbegin() , x.rend()
-#define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
-const double PI = 3.141592653589793;
+#include "../Header.cpp"
 
 vl manacher(string& s)
 {

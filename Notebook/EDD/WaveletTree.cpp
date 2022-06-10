@@ -1,5 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
+#include "../Header.cpp"
 typedef vector<int>::iterator iter;
 
 //Wavelet tree with succinct representation of bitmaps

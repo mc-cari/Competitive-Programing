@@ -1,16 +1,4 @@
-#include<bits/stdc++.h>
-#pragma GCC optimize("Ofast")
-using namespace std;
-typedef long long ll;
-typedef vector<ll> vl;
-typedef pair<ll,ll> pll;
-typedef vector<pll> vp;
-typedef long double db;
-#define INF 1e9
-#define EPS 1e-9
-#define ALL(x) x.begin() , x.end()
-#define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
-#define PI acos(-1.0) 
+#include "../Header.cpp"
 
 double DEG_to_RAD(double d) { return d*PI / 180.0; }
 double RAD_to_DEG(double r) { return r*180.0 / PI; }

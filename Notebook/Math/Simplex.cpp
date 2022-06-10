@@ -1,8 +1,8 @@
-#include<bits/stdc++.h>
+#include "../Header.cpp"
 #include <ext/pb_ds/assoc_container.hpp>
 #include <ext/pb_ds/tree_policy.hpp>
 using namespace __gnu_pbds;
-using namespace std;
+
  
 // use less_equal for multiset
 template <typename T, typename Comparator = less<T>>

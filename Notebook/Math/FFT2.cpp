@@ -1,9 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
-typedef long long  ll;
-typedef vector<ll> vl;
-typedef pair<ll,ll> pll;
-#define INF 1e12
+#include "../Header.cpp"
 
 
 #define rep(i, n) for (int i = 0; i < (int)n; i++)

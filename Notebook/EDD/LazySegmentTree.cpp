@@ -1,6 +1,4 @@
-#include <bits/stdc++.h>
-using namespace std;
-typedef long long ll;
+#include "../Header.cpp"
 
 struct SegmentTree
 {
@@ -25,7 +23,7 @@ struct SegmentTree
         }
         Lazy[n] = Nul;
     }
-	void build(ll n, ll l, ll r, vector<ll> &A)
+	void bd(ll n, ll l, ll r, vector<ll> &A)
 	{
 		if(l == r)
 		{
@@ -33,16 +31,16 @@ struct SegmentTree
 			return;
 		}
 
-		build(2*n,l,(l+r)/2,A);
-		build(2*n+1,(l+r)/2+1,r,A);
+		bd(2*n,l,(l+r)/2,A);
+		bd(2*n+1,(l+r)/2+1,r,A);
 		ST[n] = min(ST[2*n],ST[2*n+1]);
 	}
 
-	ll query(ll i, ll j)
+	ll qry(ll i, ll j)
 	{
-		return query(1,0,N-1,i,j);
+		return qry(1,0,N-1,i,j);
 	}
-	ll query(ll n, ll l, ll r, ll i, ll j)
+	ll qry(ll n, ll l, ll r, ll i, ll j)
 	{
 
 		if(r < i || j < l ) return Nul;
@@ -51,14 +49,14 @@ struct SegmentTree
 
 		if(i <= l && r <= j) return ST[n];
 
-		return min(query(2*n,l,(l+r)/2,i,j),query(2*n+1,(l+r)/2+1,r,i,j));
+		return min(qry(2*n,l,(l+r)/2,i,j),qry(2*n+1,(l+r)/2+1,r,i,j));
 	}
 
-	void update(ll i,ll j, ll v)
+	void upd(ll i,ll j, ll v)
 	{
-		return update(1,0,N-1,i,j,v);
+		return upd(1,0,N-1,i,j,v);
 	}
-	void update(ll n, ll l, ll r, ll i, ll j, ll v)
+	void upd(ll n, ll l, ll r, ll i, ll j, ll v)
 	{
 
 		if(l > j || r < i)
@@ -74,38 +72,11 @@ struct SegmentTree
         }
         up(n,l,r);
 
-		update(2*n,l,(l+r)/2,i,j,v);
-		update(2*n+1,(l+r)/2+1,r,i,j,v);
+		upd(2*n,l,(l+r)/2,i,j,v);
+		upd(2*n+1,(l+r)/2+1,r,i,j,v);
 
 		ST[n] = min(ST[2*n],ST[2*n+1]);
 	}
 };
 
-int main()
-{
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-	ll n,x,y,u,c,q,t,v;
-	cin>>t;
-	while(t--){
-        string z;
 
-        cin>>n>>u;
-        vector<ll> A(n,0);
-
-        SegmentTree ST(A);
-        for(int i=0;i<u;i++)
-        {
-            cin>>x>>y>>v;
-            ST.update(x,y,v);
-        }
-        cin>>q;
-        for (ll i=0;i<q;i++)
-        {
-           cin>>x;
-           cout<<ST.query(x,x)<<"\n";
-        }
-	}
-
-    return 0;
-}

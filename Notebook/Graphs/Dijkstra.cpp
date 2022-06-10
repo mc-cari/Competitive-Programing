@@ -1,11 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
-typedef long long ll;
-typedef vector<ll> vl;
-typedef vector<pll> vp;
-typedef pair<ll,ll> pll;
-#define INF 1e12
-
+#include "../Header.cpp"
 
 int main()
 {

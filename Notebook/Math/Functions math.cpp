@@ -1,6 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
-typedef long long ll;
+#include "../Header.cpp"
 
 // pre overflow
 ll mul(ll x, ll y) { if (x > MX / y) return MX; return x * y; }
@@ -56,18 +54,7 @@ ll expmod(ll b, ll e){
     return ans;
 }
 
-ll binpow(ll a, ll b, ll m) {
-    a %= m;
-    ll res = 1;
-    while (b > 0) {
-        if (b & 1)
-            res = res * a % m;
-        a = a * a % m;
-        b >>= 1;
-    }
-    return res;
-}
-
+// When M is prime
 ll invmod(ll a){ return expmod(a, M-2); }
 
 // inv modular precalculo

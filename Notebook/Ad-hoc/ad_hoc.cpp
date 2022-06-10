@@ -1,9 +1,4 @@
-#include<bits/stdc++.h>
-
-#pragma GCC optimize("Ofast")
-using namespace std;
-typedef vector<ll> vl;
-typedef long long ll;
+#include "../Header.cpp"
 
 int joseph(int n,int m)
 {
@@ -66,5 +61,22 @@ de tamaño divisor(N) que lo puede armar solo consigo mismo
 
 Para hashear un arbol se usan parentesis, el hash es distinto para cada root,
 hay que ordenar los hijos antes de hashear
+
+
+
+
+
+everyone loses their hats all at once, and each person puts on a random hat;
+in expectation, how many people get their own hats back? 
+The probability that the each person gets their own hat is 1/N, 
+and then by linearity of expectation,
+the total number of instances of someone getting their own hat is 1/N*N=1.
+
+expeted value to two people will get their original hat : 1/2
+for 3: 1/3
+
+
+
+
 
 */

@@ -1,5 +1,4 @@
-#include<bits/stdc++.h>
-using namespace std;
+#include "../Header.cpp"
 
 using namespace chrono;
 auto start1 = high_resolution_clock::now();
@@ -177,12 +176,12 @@ int res(int a,int b)
     a=a/c;
     return a;
 }
-int gcd(int a,int b)//max a
+int gcd(int a, int b)
 {
-    if (b==0)return a;
-    return gcd(b,a%b);
+    if (b == 0) return a;
+    return gcd(b, a % b);
 }
-int extn_gcd(int m,int n)// retorna inverso modular b*b-1=1(mod n)
+int extn_gcd(int m, int n)// retorna inverso modular b*b-1=1(mod n)
 {
     stack<tuple<int,int,int,int> >ext_gcd;
     ext_gcd.push(make_tuple(max(m,n),min(m,n),-1,-1));

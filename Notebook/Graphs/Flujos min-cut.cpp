@@ -1,6 +1,5 @@
 // C++ program for finding minimum cut using Ford-Fulkerson 
-#include<bits/stdc++.h>
-using namespace std; 
+#include "../Header.cpp"
   
 
 // minimo cubrimiento aristas = min-cut

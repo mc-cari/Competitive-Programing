@@ -1,17 +1,4 @@
-#include<bits/stdc++.h>
-#pragma GCC optimize("Ofast")
-using namespace std;
-typedef long long ll;
-typedef vector<ll> vl;
-typedef pair<ll,ll> pll;
-typedef vector<pll> vp;
-typedef double db;
-#define INF 1e10
-#define EPS 1e-9
-#define ALL(x) x.begin() , x.end()
-#define ALLR(x) x.rbegin() , x.rend()
-#define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
-const double PI = acos(-1.0);
+#include "../Header.cpp"
 
 // From CP4: https://github.com/stevenhalim/cpbook-code/blob/master/ch4/traversal/UVa11838.cpp
 
