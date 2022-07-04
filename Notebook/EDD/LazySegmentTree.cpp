@@ -3,15 +3,14 @@
 struct SegmentTree
 {
 	vector<ll> ST,Lazy;
-	ll N;
-    ll Nul = 0;
+	ll N, Nul = 0;
 	SegmentTree(vector<ll> &A)
 	{
 		N = A.size();
 		ST.resize(4*N+5,0);
 		Lazy.resize(4*N+5,Nul);
 
-		build(1,0,N-1,A);
+		bd(1,0,N-1,A);
 	}
     void up(ll n, ll l, ll r)
     {
@@ -23,7 +22,8 @@ struct SegmentTree
         }
         Lazy[n] = Nul;
     }
-	void bd(ll n, ll l, ll r, vector<ll> &A)
+	ll op(ll x, ll y) { return min(x,y); }
+	void bd(ll n, ll l, ll r, vl &A)
 	{
 		if(l == r)
 		{
@@ -33,7 +33,7 @@ struct SegmentTree
 
 		bd(2*n,l,(l+r)/2,A);
 		bd(2*n+1,(l+r)/2+1,r,A);
-		ST[n] = min(ST[2*n],ST[2*n+1]);
+		ST[n] = op(ST[2*n], ST[2*n+1]);
 	}
 
 	ll qry(ll i, ll j)
@@ -42,16 +42,11 @@ struct SegmentTree
 	}
 	ll qry(ll n, ll l, ll r, ll i, ll j)
 	{
-
 		if(r < i || j < l ) return Nul;
-
         up(n,l,r);
-
 		if(i <= l && r <= j) return ST[n];
-
-		return min(qry(2*n,l,(l+r)/2,i,j),qry(2*n+1,(l+r)/2+1,r,i,j));
+		return op(qry(2*n,l,(l+r)/2,i,j), qry(2*n+1,(l+r)/2+1,r,i,j));
 	}
-
 	void upd(ll i,ll j, ll v)
 	{
 		return upd(1,0,N-1,i,j,v);
@@ -74,8 +69,7 @@ struct SegmentTree
 
 		upd(2*n,l,(l+r)/2,i,j,v);
 		upd(2*n+1,(l+r)/2+1,r,i,j,v);
-
-		ST[n] = min(ST[2*n],ST[2*n+1]);
+		ST[n] = op(ST[2*n], ST[2*n+1]);
 	}
 };
 

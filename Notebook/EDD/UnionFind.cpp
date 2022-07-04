@@ -2,6 +2,7 @@
 
 struct UF{
     vl p, r, sz;
+    UF uf();
     UF(ll n)
     {
         r.assign(n, 0);
@@ -27,6 +28,7 @@ struct UF{
 struct UF{
     vl p, r, sz;
     stack<vl> S;
+	UF () {}
     UF(ll n)
     {
         r.assign(n, 0);
@@ -49,8 +51,9 @@ struct UF{
     }
     void rollback()
     {
-        auto a = S.back(); S.pop();
+        auto a = S.top(); S.pop();
         p[a[0]] = a[2];
         p[a[1]] = a[3];
+		sz[a[0]] -= sz[a[1]];
     }
 };

@@ -13,16 +13,27 @@ typedef double db;
 #define ALLR(x) x.rbegin() , x.rend()
 #define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
 #define PI acos(-1.0)
-#define pb push_back
 
-int main() {
+ll n, m, x;
 
-	ios::sync_with_stdio(false);
+int main(){
+
+	ios_base::sync_with_stdio(0);
 	cin.tie(0);
-	cout.tie(0);
 
-	// Code here
+    vl c = {6, 2, 5, 5, 4, 5, 6, 3, 7, 6};
+    cin >> n >> m;
+    ll ans = 0;
+    for(int i = n; i <= m; i++)
+    {
+        string s = to_string(i);
+        for(auto it : s) ans += c[it - '0'];
+        
+    }
+    cout << ans << "\n";
 
-	cerr << "\nTime elapsed: " << 1000 * clock() / CLOCKS_PER_SEC << "ms\n";
-	return 0;
+
+
+    cerr << "\nTime elapsed: " << 1000 * clock() / CLOCKS_PER_SEC << "ms\n";
+    return 0;
 }

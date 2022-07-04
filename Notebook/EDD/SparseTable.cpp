@@ -43,9 +43,5 @@ int main()
     vector<int>A = {7,10,19,3,1,2,7,7};
     SparseTable SP(A);
     cout<<SP.op(1,3)<<endl;
-
-
-
-
     return 0;
 }

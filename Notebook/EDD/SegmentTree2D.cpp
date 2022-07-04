@@ -10,11 +10,11 @@ struct SegmentTree{
 
         ST.assign(4*N,0);
     }
-    void update(ll i, ll v)
+    void upd(ll i, ll v)
     {
-        return update(1,0,N-1,i,v);
+        return upd(1,0,N-1,i,v);
     }
-    void update(ll n,ll l,ll r,ll i, ll v)
+    void upd(ll n,ll l,ll r,ll i, ll v)
     {
         if(i < l || r < i) return;
 
@@ -24,25 +24,23 @@ struct SegmentTree{
             return;
         }
 
-        update(2*n,l,(l+r)/2,i,v);
-        update(2*n+1,(l+r)/2+1,r,i,v);
+        upd(2*n,l,(l+r)/2,i,v);
+        upd(2*n+1,(l+r)/2+1,r,i,v);
 
-        ST[n]=ST[2*n]+ST[2*n+1];
+        ST[n] = ST[2*n]+ST[2*n+1];
     }
-    ll query(ll i,ll j)
+    ll qry(ll i,ll j)
     {
-        return query(1,0,N-1,i,j);
+        return qry(1,0,N-1,i,j);
     }
-    ll query(ll n,ll l,ll r, ll i, ll j)
+    ll qry(ll n,ll l,ll r, ll i, ll j)
     {
         if(r < i || j < l)
-        {
             return 0;
-        }
+
         if(i <= l && r <= j)
-        {
             return ST[n];
-        }
+
         return query(2*n,l,(l+r)/2,i,j)+query(2*n+1,(l+r)/2+1,r,i,j);
     }
 };

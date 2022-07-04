@@ -17,7 +17,7 @@ void insertVector(int mask) {
 
 		if (!basis[i]) {
 			basis[i] = mask;
-      sz++;
+            sz++;
 			return;
 		}
 
@@ -57,20 +57,6 @@ ll expmod(ll b, ll e){
 // When M is prime
 ll invmod(ll a){ return expmod(a, M-2); }
 
-// inv modular precalculo
-const int MAXN = 1e7, M = 1e9+7;
-int I
-14´0876NV[ll(1e7-+31)];
-// ...
-INV[1] = 1;
-for(ll a = 2; a < MAXN; a++) INV[a] = M - (ll)(M/a)*INV[M%a]%M;
-
-//Factoriales
-ll F[MAXN];
-// ...
-F[0] = 1;
-for(ll i = 1; i < MAXN; i++) F[i] = F[i-1]*i %M;
-
 //inv modular factoriales
 const ll MAXN = 1e5 + 1;
 ll F[MAXN], INV[MAXN], FI[MAXN];
@@ -109,7 +95,7 @@ for(int i = 0; i < MAXN; i++)
     C[i][0] = 1; if(i < MAXK) C[i][i] = 1;
     for(int j = 1; j < min(i, MAXK); j++)
         C[i][j] = (C[i-1][j-1] + C[i-1][j])%M;
-}
+
 
 // combinatoria precalculo acotado
 vector<vector<ll>> C;
@@ -192,13 +178,24 @@ forn(i, MAXN){
 
 // Matrices
 
+
+// Matrix exp
+
+/*
+matrix A: transitions Axb
+vector b(rows, 1): base case of dp
+Represents last |b| states of dp
+
+
+*/
+
 struct Mat {
-    vector<vector<ll>> vec;
-    Mat(): vec(1, vector<ll>(1, 0)) {}
-    Mat(int n): vec(n, vector<ll>(n) ) {}
-    Mat(int n, int m): vec(n, vector<ll>(m) ) {}
-    vector<ll> &operator[](int f){ return vec[f]; }
-    const vector<ll> &operator[](int f) const { return vec[f]; }
+    vector<vl> vec;
+    Mat(): vec(1, vl(1, 0)) {}
+    Mat(int n): vec(n, vl(n) ) {}
+    Mat(int n, int m): vec(n, vl(m) ) {}
+    vl &operator[](int f){ return vec[f]; }
+    const vl &operator[](int f) const { return vec[f]; }
     int size() const { return vec.size(); }
 };
 
@@ -212,7 +209,7 @@ Mat operator *(Mat A, Mat B) {
 
 Mat expmat(Mat A, ll e){
     int n = A.size();
-    Mat Ans(n); forn(i, n) Ans[i][i] = 1;
+    Mat Ans(n); for(int i = 0; i < n; i++) Ans[i][i] = 1;
     while(e){
         if(e&1) Ans = Ans*A;
         A = A*A; e >>= 1;

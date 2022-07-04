@@ -1,10 +1,10 @@
 #include "../Header.cpp"
 #include "UnionFind.cpp"
-struct DC
+struct DinC
 {
 	vector<vp> DC;
 	ll T; UF uf;
-	SegmentTree(ll times, ll n)
+	DinC(ll times, ll n)
 	{
 		T = times;
 		DC.assign(4*T, vp());
@@ -12,28 +12,36 @@ struct DC
 	}
 	void qry()
 	{
-		return upd(1, 0, N-1, 0);
+		qry(1, 0, T-1);
 	}
-	void qry()
+	void qry(ll n, ll l, ll r)
 	{
-		if(r < i || j < l) return;
 
-		for(auto it : DC[n]) uf.find(it.first, it.second);
+		for(auto it : DC[n]) uf.join(it.first, it.second);
 
 		if(l == r) // process time l
 		{
-
+			for(auto it : ord[l])
+			{
+				
+				ll x1 = uf.find(it.first);
+				ll x2 = uf.find(it.second);
+				ans += uf.sz[x1] * uf.sz[x2];
+			}
+			
 		}
-		qry(2*n,l,(l+r)/2);
-		qry(2*n+1,(l+r)/2+1,r);
+		else{
+			qry(2*n,l,(l+r)/2);
+			qry(2*n+1,(l+r)/2+1,r);
+		}
 
-		for(auto it : DC[n]) uf.rollback()
+		for(auto it : DC[n]) uf.rollback();
 	}
-	void upd(ll i,ll j, ll v)
+	void upd(ll i,ll j, pll v)
 	{
-		return upd(1, 0, N-1, i, j, v);
+		return upd(1, 0, T-1, i, j, v);
 	}
-	void upd(ll n, ll l, ll r, ll i, ll j, ll v)
+	void upd(ll n, ll l, ll r, ll i, ll j, pll v)
 	{
 		if(r < i || j < l) return;
         if(i <= l && r <= j)

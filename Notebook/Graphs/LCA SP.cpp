@@ -159,7 +159,7 @@ struct SparseTableLCA
     ll LCA(ll u,ll v)
     {
         ll x = u, y = v;
-        if(D[x] <= D[v]) swap(x, y);
+        if(D[u] <= D[v]) swap(x, y);
 
 
         /*if(D[u] > D[v])
