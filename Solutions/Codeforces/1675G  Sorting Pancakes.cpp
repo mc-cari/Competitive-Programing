@@ -15,7 +15,7 @@ typedef double db;
 #define PI acos(-1.0)
 #define pb push_back
 
-// https://codeforces.com/contest/1675/problem/G
+
 int main(){
 
 	ios_base::sync_with_stdio(0);
@@ -43,8 +43,9 @@ int main(){
 
 	for(int j = 0; j <= m; j++)
 	{
-		if(ac[1] >= j) memo[0][j][j] = ac[1] - j; // move right
-		else memo[0][j][j] = panc_ac[j]; // move pancakes [0:j] to pos 0
+		memo[0][j][j] = abs(ac[1] - j);
+		//if(ac[1] >= j) memo[0][j][j] = ac[1] - j; // move right
+		//else memo[0][j][j] = panc_ac[j]; // move pancakes [0:j] to pos 0
 	}
 	for(int j = m-1; j >= 0; j--)
 		for(int k = j; k <=m; k++)
@@ -56,13 +57,13 @@ int main(){
 		{
 			for(int k = j; k <= m; k++)
 			{
-				ll add = 0;
+				/*ll add = 0;
 				if(ac[i+1] >= k) add = ac[i+1] - k; //move unused to right
 				else{
 					ll lend = min((ll)j, k - ac[i+1]);
 					add = panc_ac[k] - panc_ac[k - lend] - i * lend;
-				}
-				memo[i][j][k] = memo[i - 1][j][k - j] + add;
+				}*/
+				memo[i][j][k] = memo[i-1][j][k-j] + abs(ac[i+1] - k);
 			}
 		}
 
