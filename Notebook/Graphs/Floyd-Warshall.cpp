@@ -1,8 +1,6 @@
 #include "../Header.cpp"
 
 // From Competitive Programing 4 book
-
-
 ll p[500][500];
 void printPath(int i, int j)
 {
@@ -19,12 +17,12 @@ int main()
     for(int i = 0; i < n; i++)
     {
         g[i][i] = 0;
-        //g[i][i] = INF;  Detect cheapest positible cycle for each i
+        //g[i][i] = INF;  Detect cheapest positive cycle for each i
     }
     for(int i = 0; i < m; i++)
     {
         cin >> x >> y >> w;
-        g[x][y] = min(g[x][y], w); // for repeats
+        g[x][y] = min(g[x][y], w); // handle repeats
     }
 
     
