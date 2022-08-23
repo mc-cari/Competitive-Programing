@@ -25,24 +25,6 @@ void insertVector(int mask) {
 	}
 }
 
-
-vector<vl > memo (5001,vl (50,-1));
-ll Com (ll n,ll r,ll p) //Coef binomial modulo p(primo)
-{
-    if(r<0||r>n) return 0;
-    if(r==0||n==r)return 1;
-    if(n>=p)
-    {
-        return Com(n/p,r/p,p)*Com(n%p,r%p,p)%p;
-    }
-    if(memo[n][r]==-1)
-    {
-        memo[n][r]=(Com(n-1,r-1,p)+Com(n-1,r,p))%p;
-    }
-
-    return memo[n][r];
-}
-
 const int M = 1e9+7;
 // binary exponent 
 ll expmod(ll b, ll e){
@@ -61,9 +43,10 @@ ll invmod(ll a){ return expmod(a, M-2); }
 const ll MAXN = 1e5 + 1;
 ll F[MAXN], INV[MAXN], FI[MAXN];
 // ...
-F[0] = 1; for(ll i = 1; i < MAXN; i++) F[i] = F[i-1]*i %M;
-INV[1] = 1; for(ll i = 2; i < MAXN; i++) INV[i] = M - (ll)(M/i)*INV[M%i]%M;
-FI[0] = 1; for(ll i = 1; i < MAXN; i++) FI[i] = FI[i-1]*INV[i] %M;
+
+F[0] = 1; repx(i, 1, MAXN) F[i] = F[i-1]*i %M;
+INV[1] = 1; repx(i, 2, MAXN) INV[i] = M - (ll)(M/i)*INV[M%i]%M;
+FI[0] = 1; repx(i, 1, MAXN) FI[i] = FI[i-1]*INV[i] %M;
 
 // factoriales n = 1e18, primo chico
 ll F[MAXN];
@@ -91,10 +74,11 @@ ll Comb(ll n, ll k){
 // combinatoria precalculo
 ll C[MAXN][MAXK];
 // ...
-for(int i = 0; i < MAXN; i++)
-    C[i][0] = 1; if(i < MAXK) C[i][i] = 1;
-    for(int j = 1; j < min(i, MAXK); j++)
+rep(i, MAXN){
+    C[i][0] = 1; if(i < MAXN) C[i][i] = 1;
+    repx(j, 1, min(i, (int)MAXK))
         C[i][j] = (C[i-1][j-1] + C[i-1][j])%M;
+}
 
 
 // combinatoria precalculo acotado
@@ -186,14 +170,21 @@ matrix A: transitions Axb
 vector b(rows, 1): base case of dp
 Represents last |b| states of dp
 
-
+F_n
+...
+F2
+F1
 */
 
+// a^p = a*p mod P
+// if a % p == 0 return 0
+
+// to calculate p, can use p mod (P-1)
 struct Mat {
     vector<vl> vec;
     Mat(): vec(1, vl(1, 0)) {}
     Mat(int n): vec(n, vl(n) ) {}
-    Mat(int n, int m): vec(n, vl(m) ) {}
+    Mat(int n, int m): vec(n, vl(m, 0) ) {}
     vl &operator[](int f){ return vec[f]; }
     const vl &operator[](int f) const { return vec[f]; }
     int size() const { return vec.size(); }
@@ -202,14 +193,14 @@ struct Mat {
 Mat operator *(Mat A, Mat B) {
     int n = A.size(), m = A[0].size(), t = B[0].size();
     Mat ans(n, t);
-    for(int i = 0; i < n; i++) for(int j = 0; j < t; j++) for(int k = 0; k < m; k++)
+    rep(i, n) rep(j, t) rep(k, m)
         ans[i][j] = (ans[i][j] + A[i][k] * B[k][j] % MOD) % MOD;
     return ans;
 }
 
 Mat expmat(Mat A, ll e){
     int n = A.size();
-    Mat Ans(n); for(int i = 0; i < n; i++) Ans[i][i] = 1;
+    Mat Ans(n); rep(i, n) Ans[i][i] = 1;
     while(e){
         if(e&1) Ans = Ans*A;
         A = A*A; e >>= 1;
@@ -384,3 +375,9 @@ for(int i = 0; i < n; i++)
         grundy[i][j] = mex(id);
     }
 }
+
+// fibonacci numbers
+f_i = 1 / sqrt(5 * ((1 + sqrt(5)) / 2) ^ n - ((1 - sqrt(5)) / 2) ^ n);
+
+// catalan numbers
+a_n = 1 / (n+1) * comb(2n, n);

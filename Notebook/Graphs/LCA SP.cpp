@@ -68,16 +68,17 @@ struct SparseTableLCA
         SP.clear();
         SP.push_back(parent);
         maxlg=maxlog2(n);
-        for(ll i=1;i<=maxlog2(n);i++)
+
+        repx(i, 1 ,maxlog2(n)+1)
         {
-            vl c;
-            for(ll j=0;j<n;j++)
+            vl aux;
+            rep(j, n)
             {
                 if(SP[i-1][j]!=-1)
-                c.push_back(SP[i-1][SP[i-1][j]]);
-                else c.push_back(-1);
+                aux.push_back(SP[i-1][SP[i-1][j]]);
+                else aux.push_back(-1);
             }
-            SP.push_back(c);
+            SP.push_back(aux);
         }
     }
     SparseTableLCA(vector<vector<pll>>& g, ll ini)

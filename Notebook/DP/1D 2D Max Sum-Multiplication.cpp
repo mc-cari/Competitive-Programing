@@ -69,4 +69,19 @@ int main()
         cout << ans << "\n";
     }
 
+
+    // n dimension acumulative sum
+    for dim = 0 to 4
+        for a = 0 to na-1
+            for b = 0 to nb-1
+                for c = 0 to nc - 1
+                    for d = 0 to nd - 1
+                        pa = a - (dim==0); pb = b - (dim==1); pc = c - (dim==2);
+                        pd = d - (dim==3);
+                        if (pa >= 0 && pb >= 0 && pc >= 0 && pd >= 0)
+                            dp(a, b, c, d) += dp (pa, pb, pc, pd)
+    // o por cada celda
+    for x in S //(celda de menor a mayor tal que todas las anteriores estan procesadas)
+    
+
 }

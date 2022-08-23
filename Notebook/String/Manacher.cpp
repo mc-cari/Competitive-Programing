@@ -6,7 +6,7 @@ vl manacher(string& s)
     // string con # entre medio (2n - 1)
     vl lps(n);
     int l = 0, r = 0, c = 0;
-    for(int i = 0; i < n; i++)
+    rep(i, n)
     {
         int j = l+(r-i);
         lps[i] = min(r-i, (int)lps[j]);

@@ -3,34 +3,27 @@
 struct SparseTable
 {
     vector<vl >SP;
+	
     SparseTable(vl&A)
     {
-        int n=A.size();
+        int n = A.size();
         SP.push_back(A);
-        int maxlog = 31 - __builtin_clz(n);
-        for(int i=1;i<=maxlog;i++)
-        {
-            vl c;
-            for(int j=0;j<n-(1<<i)+1;j++)
+        ll maxlog = 31 - __builtin_clz(n);
+        repx(i, 1 ,maxlog+1)
+		{
+			vl aux;
+			rep(j, n-(1<<i)+1)
             {
-                c.push_back(min(SP[i-1][j],SP[i-1][j+(1<<(i-1))]));
+                aux.push_back(max(SP[i-1][j],SP[i-1][j+(1<<(i-1))]));
             }
-            SP.push_back(c);
+            SP.push_back(aux);
         }
-        /*for(int i=0;i<=maxlog;i++)
-        {
-            for(int j=0;j<n-(1<<i)+1;j++)
-            {
-                cout<<SP[i][j]<<" ";
-            }
-            cout<<endl;
-        }*/
+
     }
-    int op(int l,int r)
+    int op(ll l,ll r)
     {
-        //cambiar operaci�n arriba
-        int maxlog = 31 - __builtin_clz(r-l+1);
-        return min(SP[maxlog][l],SP[maxlog][r-(1<<maxlog)+1]);
+        ll maxlog = 31 - __builtin_clz(r-l+1);
+        return max(SP[maxlog][l],SP[maxlog][r-(1<<maxlog)+1]);
     }
 };
 

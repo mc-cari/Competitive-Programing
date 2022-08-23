@@ -1,5 +1,7 @@
 #include "../Header.cpp"
 
+
+ll nst;
 struct SegmentTree
 {
 	vector<ll> ST,Lazy;
@@ -43,7 +45,7 @@ struct SegmentTree
 	ll qry(ll n, ll l, ll r, ll i, ll j)
 	{
 		if(r < i || j < l ) return Nul;
-        up(n,l,r);
+        if(Lazy[n]) up(n,l,r);
 		if(i <= l && r <= j) return ST[n];
 		return op(qry(2*n,l,(l+r)/2,i,j), qry(2*n+1,(l+r)/2+1,r,i,j));
 	}
@@ -53,19 +55,18 @@ struct SegmentTree
 	}
 	void upd(ll n, ll l, ll r, ll i, ll j, ll v)
 	{
-
+		if(Lazy[n]) up(n,l,r);
 		if(l > j || r < i)
         {
-            up(n, l, r);
+
             return;
         }
         if(i <= l && r <= j)
         {
             Lazy[n] += v;
-            up(n, l, r);
+            if(Lazy[n]) up(n, l, r);
             return;
         }
-        up(n,l,r);
 
 		upd(2*n,l,(l+r)/2,i,j,v);
 		upd(2*n+1,(l+r)/2+1,r,i,j,v);

@@ -1,9 +1,5 @@
 #include "../Header.cpp"
 
-
-#define rep(i, n) for (int i = 0; i < (int)n; i++)
-#define repx(i, a, b) for (int i = (int)a; i < (int)b; i++)
-
 #define M_PIl 3.141592653589793238462643383279502884L
 
 typedef complex<double> C;
@@ -49,7 +45,7 @@ vd conv(const vl &a, const vl &b)
     return res;
 }
 
-//evitar
+//slower
 vl convMod(const vl &a, const vl &b, int M)
 {
     if (a.empty() || b.empty()) return {};

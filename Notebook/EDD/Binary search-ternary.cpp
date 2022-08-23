@@ -5,10 +5,10 @@
 log(valor maximo/precision)/log(2)
                             /log(3/2) //para ternaria
 
-ll l = 0, r = n-1, p, res = -1;
+ll l = 0, r = n-1, res = -1;
 while(l <= r)
 {
-    p = (l + r) / 2;
+    ll p = (l + r) / 2;
     if(c[p] <= m)l = p+1;
     else r = p-1;
 }
@@ -16,7 +16,7 @@ while(l <= r)
 
 db l = 0, r = PI/2, mini = 1e10;
 
-for(int i = 0; i <= 100; i++)
+rep(i, 101)
 {
     db d=(r-l)/3.0,m1=l+d,m2=r-d;
     db c1 = value(m1), c2 = value(m2);

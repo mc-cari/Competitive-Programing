@@ -27,10 +27,10 @@ int main()
     for i in v: g[s].push_back({i, 0})
     */
    
-	for(int i = 0; i < v - 1; i++)
+	rep(i, v-1)
     {
         bool mod = 0;
-        for(int j = 0; j < v; j++)
+        rep(j, v)
             if(d[j] != INF)
                 for(auto it : g[j])
                 {
@@ -41,7 +41,7 @@ int main()
             break;
     }
     bool cyc = 0;
-    for(int j = 0; j < v; j++)
+    rep(j, v)
         for(auto it : g[j])
             if(d[j] < INF && d[it.first] > d[j] + it.second)
                 cyc = 1;

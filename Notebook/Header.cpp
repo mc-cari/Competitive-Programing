@@ -14,12 +14,15 @@ typedef double db;
 #define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
 #define PI acos(-1.0)
 #define pb push_back
+#define rep(i, n) for (int i = 0; i < (int)n; i++)
+#define repx(i, a, b) for (int i = (int)a; i < (int)b; i++)
 
 int main() {
 
 	ios::sync_with_stdio(false);
 	cin.tie(0);
 	cout.tie(0);
+	srand((unsigned int) time(0));
 
 	// Code here
 

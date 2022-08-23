@@ -12,33 +12,10 @@ void criba(ll b)
     crib.assign(b, 1);
     crib[0] = 0;
     crib[1] = 0;
-    for(int k=2; k < sqrt(b + 1) + 1; k++)
-    {
+    repx(k, 2, sqrt(b+1) + 1)
         if(crib[k])
-        {
-            for(int j=2; (j * k) < b + 1; j++)//para optimizar j=k
-            {
+            for(int j=2; (j * k) < b + 1; j++)//optimization j=k
                 crib[k*j] = 0;
-            }
-        }
-    }
-}
-
-vector<ll> factorial_decomp(ll n)
-{
-    vl sol(primos.size(),0);
-    ll in = 0;
-    while(in != primos.size() && primos[in] <= n)
-    {
-        ll tmp = 1;
-        for(ll k=1; k<=(log(n) / log(primos[in])) + 1; k++)
-        {
-            tmp *= primos[in];
-            sol[in] += n / pow(primos[in], k);
-        }
-        in++;
-    }
-    return sol;
 }
 
 // stores smallest prime factor for every number
@@ -257,10 +234,12 @@ int CRT()//x=b (mod m), x=a (mod n)
 //propagate val in mask to all its submask
 for (int i = 0; i < p; i++)
 {
-    for(int s = 0; s < (1 << p); s++)
+    for(int mask = 0; mask < (1 << p); mask++)
     {
-        if((s & (1 << i)) == 0)
-            f[s] += f[s | (1 << i)];
+        if((mask & (1 << i)) == 0)
+            f[mask] += f[mask | (1 << i)];
+        if(mask & (1 << i)) // to propagate from submasks to mask
+            dp[mask] += dp[mask - (1 << i)];
     }
 }
 
@@ -318,8 +297,4 @@ void dfs(ll in, ll p)
     } 
     R[in] = num;
 }
-int main()
-{
 
-    return 0;
-}

@@ -57,17 +57,17 @@ int main()
             LD[i]=1;
             for(int j=0;j<i;j++)
             {
-                if(A[j]>A[i])
+                if(A[j]<A[i])
                 {
                     LI[i]=max(LI[i],LI[j]+1);
                 }
-                if(A[j]<A[i])
+                if(A[j]>A[i])
                 {
                     LD[i]=max(LD[i],LD[j]+1);
                 }
             }
-            in=max(in,LD[i]);
-            dec=max(dec,LI[i]);
+            in=max(in,LI[i]);
+            dec=max(dec,LD[i]);
 
         }
     }

@@ -7,7 +7,7 @@ struct UF{
     {
         r.assign(n, 0);
         sz.assign(n, 1);
-        for(ll i = 0; i < n; i++)
+        rep(i, n)
             p.push_back(i);
     }
     ll find(ll x)

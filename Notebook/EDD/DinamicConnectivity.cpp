@@ -1,5 +1,7 @@
 #include "../Header.cpp"
 #include "UnionFind.cpp"
+
+// M log M (log M from UF)
 struct DinC
 {
 	vector<vp> DC;

@@ -14,26 +14,26 @@ int main()
 
     
     vector<vl > g(n, vl(n, INF));
-    for(int i = 0; i < n; i++)
+    rep(i, n)
     {
         g[i][i] = 0;
         //g[i][i] = INF;  Detect cheapest positive cycle for each i
     }
-    for(int i = 0; i < m; i++)
+    rep(i, m)
     {
         cin >> x >> y >> w;
         g[x][y] = min(g[x][y], w); // handle repeats
     }
 
     
-    for(int i = 0; i < n; i++)
-        for(int j = 0; j < n; j++)
+    rep(i, n)
+        rep(j, n)
             p[i][j] = i;
 
 
-    for(int k = 0; k < n; k++)
-        for(int i = 0; i < n; i++)
-            for(int j = 0; j < n; j++)
+    rep(k, n)
+        rep(i, n)
+            rep(j, n)
                 //g[i][j] |= (g[i][k] & g[k][j]); to find i is connected with j
                 // if at the end g[i][j] & g[j][i], i and j are in the same SCC
 
@@ -47,13 +47,13 @@ int main()
                     
                 }
                         
-    for(int k = 0; k < n; k++)
-        for(int i = 0; i < n; i++)
-            for(int j = 0; j < n; j++)
+    rep(k, n)
+        rep(i, n)
+            rep(j, n)
                 if(g[i][k] != INF && g[k][j] !=INF
                     && g[k][k] < 0)
                         g[i][j] = -INF;
-    for(int i = 0; i < q; i++)
+   rep(i, q)
     {
         cin >> x >> y;
         if(g[x][y] == INF)

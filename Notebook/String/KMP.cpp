@@ -1,5 +1,5 @@
 #include "../Header.cpp"
-#define rep(i,a,b) for(int i=a; i<b; ++i)
+
 
 // FROM:
 //https://github.com/PabloMessina/Competitive-Programming-Material/blob/master/Strings/KMP.cpp
@@ -9,7 +9,7 @@
 void init_lps(string& pattern, int lps[]) {
     int n = pattern.size();
     lps[0] = 0; // base case: no proper prefix/suffix for pattern[0 .. 0] (length 1)
-    rep(j, 1, n) { // for each pattern[0 .. j]
+    repx(j, 1, n) { // for each pattern[0 .. j]
         int i = lps[j-1]; // i points to the char next to lps of previous iteration
         while (pattern[i] != pattern[j] and i > 0) i = lps[i-1];
         lps[j] = pattern[i] == pattern[j] ? i+1 : 0;
@@ -23,7 +23,7 @@ int count_matches(string& pattern, string& target) {
     init_lps(pattern, lps); // build lps array
     int matches = 0;
     int i = 0; // i tracks current char in pattern to compare
-    rep(j, 0, m) { // j tracks each char in target to compare
+    repx(j, 0, m) { // j tracks each char in target to compare
         // try to keep prefix before i as long as possible while ensuring i matches j        
         while (pattern[i] != target[j] and i > 0) i = lps[i-1];
         if (pattern[i] == target[j]) {

@@ -16,18 +16,15 @@ ll dp(ll in, ll k, ll level)
 
   ll ans = INF;
   if(level == 0 || level == 2)
-  {
+    repx(i, in, N)
     for(int i = in; i < N; i++)
-    {
       ans = min(ans, dp(i+1, k + ac[i+1] - ac[in], level + 1) + i - in + 1);
-    }
-  }
   else
   {
+    repx(i, in, N)
     for(int i = in; i < N; i++)
-    {
       ans = min(ans, dp(i+1, k, level + 1));
-    }
+
   }
 
   return memo[in][k][level] = ans;

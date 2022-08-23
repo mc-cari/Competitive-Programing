@@ -39,7 +39,12 @@ int joseph(ll n)
     return 1 + (n << 1);
 }
 
+// nim game
+// a_1 ^ a_2 ^ ... ^ a_n = 0: player 1 lose
 
+// nim variation: remove stones from [0, k] piles
+// a_1 ^_k+1 a_2 ^_k+1 ... ^_k+1 a_n = 0: player 1 lose
+// ^_k+1 = xor mod (k+1) k+1 bits = 0 mod (k+1)
 // sum of pairs
 // a*b + b*c + c*a
 //(a + b + c + d)^2 - (a^2 + b^2 + c^2)
@@ -75,8 +80,31 @@ the total number of instances of someone getting their own hat is 1/N*N=1.
 expeted value to two people will get their original hat : 1/2
 for 3: 1/3
 
-
-
-
-
 */
+
+// Modular sum optimization
+if (R >= MOD) R -= MOD;
+
+
+/*
+euler cycle
+all vertex with even degree
+
+
+hamiltonian cycle
+d(v) >= n/2 vertex degree
+
+
+exact partition  O(3^(m/3)) O(2^(m/2))
+m(4) sets and n(3) objects
+101 -
+010 -
+110
+011
+
+for each i in n:
+    choose a row with bit i on
+    erase all rows with bit i on
+    continue
+*/
+

@@ -23,17 +23,14 @@ void dfs(int t)
 
 int main()
 {
-	ll n,x,y,e,a,b,in=0;
-	cin>>n>>e;
-	vector<vl > grafo(n,vl(0));
-	for(int i=0;i<e;i++)
+	ll n, x, y, e, a, b, i n =0;
+	cin >> n >> e;
+	vector<vl> g(n, vl(0));
+	rep(i, e)
     {
-        cin>>x>>y;
-        grafo[x].push_back(y);
+        cin >> x >> y;
+        g[x].push_back(y);
     }
-    int inicio=0;
-
-
 	vl v(n, 0);
     vl d(n,INF);
     d[inicio]=0;
