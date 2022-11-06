@@ -26,6 +26,8 @@ int main() {
     cout.tie(0);
 
     ll V, Vleft;
+    // VLeft and VRight can have common vertices names
+    // match[R] -> L
     match.assign(V, -1);
     ll MCBM = 0;
     for(int L = 0; L < Vleft; L++)

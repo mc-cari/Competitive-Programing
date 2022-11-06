@@ -5,12 +5,11 @@ vector<vl > g;
 void dfs(int t)
 {
     v[t] = 1;
-    for(auto it : g[t]){
-
+    for(auto it : g[t])
         if(!v[it])
             dfs(it);
-    }
-    s.push_back(t);
+    
+    s.pb(t);
 }
 int main()
 {
@@ -20,7 +19,7 @@ int main()
 	g.assign(n, vl());
     v.assign(n, 0);
 
-    for(int i = 0; i < n; i++)
+    rep(i, n)
         if(!v[i])
             dfs(i);
 

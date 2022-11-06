@@ -39,6 +39,8 @@ int joseph(ll n)
     return 1 + (n << 1);
 }
 
+// primes in a n size range n / log(n)
+
 // nim game
 // a_1 ^ a_2 ^ ... ^ a_n = 0: player 1 lose
 
@@ -66,8 +68,6 @@ de tamaño divisor(N) que lo puede armar solo consigo mismo
 
 Para hashear un arbol se usan parentesis, el hash es distinto para cada root,
 hay que ordenar los hijos antes de hashear
-
-
 
 
 
@@ -108,3 +108,5 @@ for each i in n:
     continue
 */
 
+
+// convex hull of max  max(X, Y)^(2/3) points in recatangle (0, 0) (X, Y)

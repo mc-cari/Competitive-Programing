@@ -62,10 +62,10 @@ struct Node
 {
 	//maxPrefixSum, maxSuffixSum, Totalsum, maxSubarraySum
 	ll mxP, mxS, sum, subSum;
-    Node()
-    {
-       mxP = mxS = sum = subSum = -INF;
-    }
+	Node()
+	{
+			mxP = mxS = sum = subSum = -INF;
+	}
 	Node merge(Node r)
 	{
 		Node p;
@@ -79,11 +79,11 @@ struct Node
 	{
 		mxP = mxS = sum = subSum = v;
 	}
-    void nul()
-    {
-        mxP = mxS = subSum = -INF;
-        sum = 0;
-    }
+	void nul()
+	{
+			mxP = mxS = subSum = -INF;
+			sum = 0;
+	}
 };
 
 
@@ -119,11 +119,11 @@ struct SegmentTree
 	{
 
 		if(r < i || j < l) 
-        {
-            Node p;
-            p.nul();
-            return p;
-        }
+		{
+				Node p;
+				p.nul();
+				return p;
+		}
 
 		if(i <= l && r <= j) return ST[n];
 

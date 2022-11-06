@@ -39,7 +39,7 @@ int main()
 		   		d[it.second] = w + it.first;
 		   		q.push({d[it.second], it.second});
 			}
-	    }
+	  }
 	}
 
 	return 0;

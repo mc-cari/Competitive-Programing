@@ -14,16 +14,16 @@ struct SegmentTree
 
 		bd(1,0,N-1,A);
 	}
-    void up(ll n, ll l, ll r)
-    {
-        ST[n] += Lazy[n];
-        if(l != r)
-        {
-            Lazy[n*2] += Lazy[n];
-            Lazy[n*2+1] += Lazy[n];
-        }
-        Lazy[n] = Nul;
-    }
+	void up(ll n, ll l, ll r)
+	{
+			ST[n] += Lazy[n];
+			if(l != r)
+			{
+					Lazy[n*2] += Lazy[n];
+					Lazy[n*2+1] += Lazy[n];
+			}
+			Lazy[n] = Nul;
+	}
 	ll op(ll x, ll y) { return min(x,y); }
 	void bd(ll n, ll l, ll r, vl &A)
 	{
@@ -45,7 +45,7 @@ struct SegmentTree
 	ll qry(ll n, ll l, ll r, ll i, ll j)
 	{
 		if(r < i || j < l ) return Nul;
-        if(Lazy[n]) up(n,l,r);
+    if(Lazy[n]) up(n,l,r);
 		if(i <= l && r <= j) return ST[n];
 		return op(qry(2*n,l,(l+r)/2,i,j), qry(2*n+1,(l+r)/2+1,r,i,j));
 	}
@@ -56,17 +56,14 @@ struct SegmentTree
 	void upd(ll n, ll l, ll r, ll i, ll j, ll v)
 	{
 		if(Lazy[n]) up(n,l,r);
-		if(l > j || r < i)
-        {
+		if(l > j || r < i) return;
 
-            return;
-        }
-        if(i <= l && r <= j)
-        {
-            Lazy[n] += v;
-            if(Lazy[n]) up(n, l, r);
-            return;
-        }
+		if(i <= l && r <= j)
+		{
+			Lazy[n] += v;
+			if(Lazy[n]) up(n, l, r);
+			return;
+		}
 
 		upd(2*n,l,(l+r)/2,i,j,v);
 		upd(2*n+1,(l+r)/2+1,r,i,j,v);

@@ -243,6 +243,16 @@ for (int i = 0; i < p; i++)
     }
 }
 
+// O(3^n)
+rep(m, (1 << n)){
+    // 2^k k: number of bits in m
+    // iterates over al submasks of m in descending order of value
+    for(int s = m; ; s = (s-1) & m){
+        cout << s << endl;
+        if(s == 0) break;
+    }
+}
+
 int bit_opst(ll N,ll S)
 {
     //Obtain the remainder (modulo) of S when it is divided by N (N is a power of 2)

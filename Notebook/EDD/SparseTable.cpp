@@ -20,7 +20,7 @@ struct SparseTable
         }
 
     }
-    int op(ll l,ll r)
+    ll op(ll l,ll r)
     {
         ll maxlog = 31 - __builtin_clz(r-l+1);
         return max(SP[maxlog][l],SP[maxlog][r-(1<<maxlog)+1]);

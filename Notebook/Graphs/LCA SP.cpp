@@ -2,10 +2,10 @@
 
 struct UF{
     vector<ll>p,r;
-    ll conjuntos=0;
+
     void makeSet(ll x)//cambiar cuando no es ll
     {
-        conjuntos++;
+
         p.push_back(x);
         r.push_back(0);
     }
@@ -67,9 +67,9 @@ struct SparseTableLCA
 
         SP.clear();
         SP.push_back(parent);
-        maxlg=maxlog2(n);
+        maxlg = 63 - __builtin_clzll(n);
 
-        repx(i, 1 ,maxlog2(n)+1)
+        repx(i, 1 , maxlg+1)
         {
             vl aux;
             rep(j, n)
@@ -105,8 +105,8 @@ struct SparseTableLCA
 
         SP.clear();
         SP.push_back(parent);
-        maxlg=maxlog2(n);
-        for(ll i=1;i<=maxlog2(n);i++)
+        maxlg= 63 - __builtin_clzll(n);
+        for(ll i = 1; i <= maxlg; i++)
         {
             vl c;
             for(ll j=0;j<n;j++)
@@ -120,7 +120,7 @@ struct SparseTableLCA
         MN.clear();
         MN.push_back(b);
 
-        for(ll i=1;i<=maxlog2;i++)
+        for(ll i=1;i<=maxlg;i++)
         {
             vl c;
             for(ll j=0;j<n;j++)
