@@ -1,11 +1,11 @@
 #include "../Header.cpp"
 
 
-ll nst;
+
 struct SegmentTree
 {
-	vector<ll> ST,Lazy;
-	ll N, Nul = 0;
+	vector<ll> ST, Lazy;
+	int N; ll Nul = 0;
 	SegmentTree(vector<ll> &A)
 	{
 		N = A.size();
@@ -14,7 +14,7 @@ struct SegmentTree
 
 		bd(1,0,N-1,A);
 	}
-	void up(ll n, ll l, ll r)
+	void up(int n, int l, int r)
 	{
 			ST[n] += Lazy[n];
 			if(l != r)
@@ -25,7 +25,7 @@ struct SegmentTree
 			Lazy[n] = Nul;
 	}
 	ll op(ll x, ll y) { return min(x,y); }
-	void bd(ll n, ll l, ll r, vl &A)
+	void bd(int n, int l, int r, vl &A)
 	{
 		if(l == r)
 		{
@@ -38,30 +38,30 @@ struct SegmentTree
 		ST[n] = op(ST[2*n], ST[2*n+1]);
 	}
 
-	ll qry(ll i, ll j)
+	ll qry(int i, int j)
 	{
 		return qry(1,0,N-1,i,j);
 	}
-	ll qry(ll n, ll l, ll r, ll i, ll j)
+	ll qry(int n, int l, int r, int i, int j)
 	{
 		if(r < i || j < l ) return Nul;
-    if(Lazy[n]) up(n,l,r);
+    if(Lazy[n] != Nul) up(n,l,r);
 		if(i <= l && r <= j) return ST[n];
 		return op(qry(2*n,l,(l+r)/2,i,j), qry(2*n+1,(l+r)/2+1,r,i,j));
 	}
-	void upd(ll i,ll j, ll v)
+	void upd(int i, int j, ll v)
 	{
 		return upd(1,0,N-1,i,j,v);
 	}
-	void upd(ll n, ll l, ll r, ll i, ll j, ll v)
+	void upd(int n, int l, int r, int i, int j, ll v)
 	{
-		if(Lazy[n]) up(n,l,r);
+		if(Lazy[n] != Nul) up(n,l,r);
 		if(l > j || r < i) return;
 
 		if(i <= l && r <= j)
 		{
 			Lazy[n] += v;
-			if(Lazy[n]) up(n, l, r);
+			if(Lazy[n] != Nul) up(n, l, r);
 			return;
 		}
 

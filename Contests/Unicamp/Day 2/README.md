@@ -1,0 +1,1 @@
+https://open.kattis.com/contests/ez4uz8

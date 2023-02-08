@@ -6,89 +6,14 @@ auto stop = high_resolution_clock::now();
 auto duration = duration_cast<microseconds>(stop - start1);
 //cerr << duration.count()/1000 << "ms" << endl;
 
-vector <bool> crib;
-void criba(ll b)
-{
-    crib.assign(b, 1);
-    crib[0] = 0;
-    crib[1] = 0;
-    repx(k, 2, sqrt(b+1) + 1)
-        if(crib[k])
-            for(int j=2; (j * k) < b + 1; j++)//optimization j=k
-                crib[k*j] = 0;
-}
 
-// stores smallest prime factor for every number
-int spf[MAXN];
- 
-// Calculating SPF (Smallest Prime Factor) for every
-// number till MAXN.
-// Time Complexity : O(nloglogn)
-void sieve()
-{
-    spf[1] = 1;
-    for (int i=2; i<MAXN; i++)
- 
-        // marking smallest prime factor for every
-        // number to be itself.
-        spf[i] = i;
- 
-    // separately marking spf for every even
-    // number as 2
-    for (int i=4; i<MAXN; i+=2)
-        spf[i] = 2;
- 
-    for (int i=3; i*i<MAXN; i++)
-    {
-        // checking if i is prime
-        if (spf[i] == i)
-        {
-            // marking SPF for all numbers divisible by i
-            for (int j=i*i; j<MAXN; j+=i)
- 
-                // marking spf[j] if it is not
-                // previously marked
-                if (spf[j]==j)
-                    spf[j] = i;
-        }
-    }
-}
- 
-// A O(log n) function returning primefactorization
-// by dividing by smallest prime factor at every step
-vector<int> getFactorization(int x)
-{
-    vector<int> ret;
-    while (x != 1)
-    {
-        ret.push_back(spf[x]);
-        x = x / spf[x];
-    }
-    return ret;
-}
 
-void primeFactors(ll n)  
-{    
-    while (n % 2 == 0)  
-    {  
-        cout << 2 << " ";  
-        n = n/2;  
-    }  
-  
-    for (int i = 3; i <= sqrt(n); i = i + 2)  
-    {   
-        while (n % i == 0)  
-        {  
-            cout << i << " ";  
-            n = n/i;  
-        }  
-    }  
-  
-    if (n > 2)  
-        cout << n << " ";  
-}
+default_random_engine generator;
+uniform_real_distribution<double> distribution(0,LLONG_MAX);
+ll num = distribution(generator);
 
-//archivos
+
+// files
 ifstream input;
 input.open("divisibility-tree.in");
 input >> n;
@@ -153,19 +78,84 @@ int res(int a,int b)
     a=a/c;
     return a;
 }
+
+
+//propagate val in mask to all its submask
+for (int i = 0; i < p; i++)
+{
+    for(int mask = 0; mask < (1 << p); mask++)
+    {
+        if((mask & (1 << i)) == 0)
+            f[mask] += f[mask | (1 << i)];
+        if(mask & (1 << i)) // to propagate from submasks to mask
+            dp[mask] += dp[mask - (1 << i)];
+    }
+}
+
+// O(3^n)
+rep(m, (1 << n)){
+    // 2^k k: number of bits in m
+    // iterates over al submasks of m in descending order of value
+    for(int s = m; ; s = (s-1) & m){
+        cout << s << endl;
+        if(s == 0) break;
+    }
+}
+
+int bit_opst(ll N,ll S)
+{
+    //Obtain the remainder (modulo) of S when it is divided by N (N is a power of 2)
+    return S &(N -1);
+    //Determine if S is a power of 2.
+    return (S &( S -1)) == 0;
+    //Turn oﬀ the last bit in S, e.g.S = (40)10 = (101000)2 →S = (32)10 = (100000)2.
+    return S &( S -1);
+    // Turn on the last zero in S, e.g.S = (41)10 = (101001)2 →S = (43)10 = (101011)2.
+    return S|| (S + 1);
+    // Turn oﬀ the last consecutive run of ones in S
+    return S &( S + 1);
+    // Turn on the last consecutive run of zeroes in S
+    return S|| (S -1);
+    // Turn on all bits
+    return S = (1 << 62)-1;
+    // multiply by 2^N
+    return S<<=N;
+    // Divide by 2^N
+    return S>>=N;
+    // Turn on the N-th bit
+    return S = S||(1<<N);
+    // Check if N-th bit is on
+    return (S & (1 << N));
+    // Turn off the N-th bit
+    return S &= ~(1 << N);
+    // Alternate satatus of N-th bir
+    return S ^= (1 << N);
+    //Value of the least significant bit on from the right
+    return N = (S&(-S));
+}
+//count numbers with i bit set [1, n-1]
+ll kol(ll n, ll i)
+{
+    return (n / (1ll << (i + 1))) * (1ll << i) + max((n % (1ll << (i + 1))) - (1ll << i), 0ll);
+}
+kol(r+1, i) - kol(l, i);
+
+
+// old implemented algorithms:
+
 int gcd(int a, int b)
 {
     if (b == 0) return a;
     return gcd(b, a % b);
 }
-int extn_gcd(int m, int n)// retorna inverso modular b*b-1=1(mod n)
+int extn_gcd(int m, int n)
 {
     stack<tuple<int,int,int,int> >ext_gcd;
     ext_gcd.push(make_tuple(max(m,n),min(m,n),-1,-1));
     while(get<1>(ext_gcd.top())!=0)
     {
         ext_gcd.push(make_tuple(get<1>(ext_gcd.top()),get<0>(ext_gcd.top())%get<1>(ext_gcd.top()),-1,-1));
-        //cout<<get<0>(ext_gcd.top())<<" "<<get<1>(ext_gcd.top())<<endl;
+
     }
     ext_gcd.pop();
     float a,b;
@@ -230,81 +220,3 @@ int CRT()//x=b (mod m), x=a (mod n)
     }
     return sol;
 }
-
-//propagate val in mask to all its submask
-for (int i = 0; i < p; i++)
-{
-    for(int mask = 0; mask < (1 << p); mask++)
-    {
-        if((mask & (1 << i)) == 0)
-            f[mask] += f[mask | (1 << i)];
-        if(mask & (1 << i)) // to propagate from submasks to mask
-            dp[mask] += dp[mask - (1 << i)];
-    }
-}
-
-// O(3^n)
-rep(m, (1 << n)){
-    // 2^k k: number of bits in m
-    // iterates over al submasks of m in descending order of value
-    for(int s = m; ; s = (s-1) & m){
-        cout << s << endl;
-        if(s == 0) break;
-    }
-}
-
-int bit_opst(ll N,ll S)
-{
-    //Obtain the remainder (modulo) of S when it is divided by N (N is a power of 2)
-    return S &(N -1);
-    //Determine if S is a power of 2.
-    return (S &( S -1)) == 0;
-    //Turn oﬀ the last bit in S, e.g.S = (40)10 = (101000)2 →S = (32)10 = (100000)2.
-    return S &( S -1);
-    // Turn on the last zero in S, e.g.S = (41)10 = (101001)2 →S = (43)10 = (101011)2.
-    return S|| (S + 1);
-    // Turn oﬀ the last consecutive run of ones in S
-    return S &( S + 1);
-    // Turn on the last consecutive run of zeroes in S
-    return S|| (S -1);
-    // Turn on all bits
-    return S = (1 << 62)-1;
-    // multiply by 2^N
-    return S<<=N;
-    // Divide by 2^N
-    return S>>=N;
-    // Turn on the N-th bit
-    return S = S||(1<<N);
-    // Check if N-th bit is on
-    return (S & (1 << N));
-    // Turn off the N-th bit
-    return S &= ~(1 << N);
-    // Alternate satatus of N-th bir
-    return S ^= (1 << N);
-    //Value of the least significant bit on from the right
-    return N = (S&(-S));
-}
-//count numbers with i bit set [1, n-1]
-ll kol(ll n, ll i)
-{
-    return (n / (1ll << (i + 1))) * (1ll << i) + max((n % (1ll << (i + 1))) - (1ll << i), 0ll);
-}
-kol(r+1, i) - kol(l, i);
-
-//Euler Tour
-vl L, R, d, c;
-ll num = -1;
-vector<vl>g;
-void dfs(ll in, ll p)
-{
-    num++;
-    L[in] = num;
-    d.push_back(c[in]);
-    for(auto it : g[in])
-    {
-        if(p != it)
-            dfs(it, in);
-    } 
-    R[in] = num;
-}
-

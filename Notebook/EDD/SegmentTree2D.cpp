@@ -3,22 +3,22 @@
 struct SegmentTree{
 
     vector<ll>ST;
-    ll N;
-    SegmentTree(ll Size)
+    int N;
+    SegmentTree(int Size)
     {
         N = Size;
 
         ST.assign(4*N,0);
     }
-    void upd(ll i, ll v)
+    void upd(int i, ll v)
     {
         return upd(1,0,N-1,i,v);
     }
-    void upd(ll n,ll l,ll r,ll i, ll v)
+    void upd(int n, int l, int r, int i, ll v)
     {
         if(i < l || r < i) return;
 
-        if(l==r)
+        if(l == r)
         {
             ST[n] += v;
             return;
@@ -29,11 +29,11 @@ struct SegmentTree{
 
         ST[n] = ST[2*n]+ST[2*n+1];
     }
-    ll qry(ll i,ll j)
+    ll qry(int i,int j)
     {
         return qry(1,0,N-1,i,j);
     }
-    ll qry(ll n,ll l,ll r, ll i, ll j)
+    ll qry(int n, int l, int r, int i, int j)
     {
         if(r < i || j < l)
             return 0;
@@ -47,24 +47,22 @@ struct SegmentTree{
 struct SegmenTree2D
 {
     vector<SegmentTree>ST;
-    ll N;
-    SegmenTree2D(ll Size)
+    int N;
+    SegmenTree2D(int Size)
     {
         N = Size;
-
         ST.resize(4*N,Size);
-
     }
 
-    void update(ll i,ll j, ll v)
+    void update(int i, int j, int v)
     {
         return update(1,0,N-1,i,j,v);
     }
-    void update(ll n,ll l,ll r,ll i,ll j, ll v)
+    void update(int n, int l, int r, int i, int j, ll v)
     {
         if(i < l || r < i) return;
 
-        if(l==r)
+        if(l == r)
         {
             ST[n].update(j,v);
             return;
@@ -75,17 +73,14 @@ struct SegmenTree2D
 
         ST[n].update(j,v);
     }
-    ll query(ll i1,ll i2,ll j1,ll j2)
+    ll query(int i1, int i2, int j1, int j2)
     {
         return query(1,0,N-1,i1,i2,j1,j2);
     }
-    ll query(ll n,ll l,ll r,ll i1,ll i2,ll j1,ll j2)
+    ll query(int n, int l, int r, int i1, int i2, int j1, int j2)
     {
-        //cout<<l<<" "<<r<<" "<<ST[n].query(i2,j2)<<endl;
         if(l > j1 || i1 > r)
-        {
             return 0;
-        }
         if(i1 <= l && r <= j1)
         {
             return ST[n].query(i2,j2);
@@ -95,28 +90,26 @@ struct SegmenTree2D
 };
 int main()
 {
-    ll q,n,x,y,l,b,r,t,a;
+    ll q, n, x, y, l, b, r, t, a;
     SegmenTree2D ST(1025);
-    while(cin>>q)
+    while(cin >> q)
     {
-        if(q==0)
+        if(q == 0)
         {
-            cin>>n;
+            cin >> n;
         }
-        else if(q==1)
+        else if(q == 1)
         {
-            cin>>x>>y>>a;
-            ST.update(x,y,a);
+            cin >> x >> y >> a;
+            ST.update(x, y, a);
         }
-        else if(q==2)
+        else if(q == 2)
         {
-            cin>>l>>b>>r>>t;
-            cout<<ST.query(l,b,r,t)<<"\n";
+            cin >> l >> b >> r >> t;
+            cout << ST.query(l, b, r, t) <<"\n";
         }
         else
-        {
             break;
-        }
         /*for(int i=0;i<n;i++)
         {
             for(int j=0;j<n;j++)

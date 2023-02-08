@@ -79,6 +79,8 @@ void Mo(vl& a, vector<Query>& q)
 } 
   
 //https://github.com/mhunicken/icpc-team-notebook-el-vasito/blob/master/other/mos_algorithm.cpp
+
+// [l,r) 
 int n,sq,nq; // array size, sqrt(array size), #queries
 struct qu{int l,r,id;};
 qu qs[MAXN];

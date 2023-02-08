@@ -4,10 +4,12 @@ using namespace std;
 typedef long long ll;
 typedef unsigned long long ull;
 typedef vector<ll> vl;
+typedef vector<int> vi;
 typedef pair<ll,ll> pll;
 typedef vector<pll> vp;
 typedef double db;
 #define INF 1e17
+#define INF32 INT_MAX
 #define EPS 1e-7
 #define ALL(x) x.begin() , x.end()
 #define ALLR(x) x.rbegin() , x.rend()
