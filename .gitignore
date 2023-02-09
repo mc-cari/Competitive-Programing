@@ -1,5 +1,17 @@
-.vscode
+**/.vscode
 
 **/in
 **/out
 **/a.out
+
+**/a
+**/a.exe
+**/Code[1-9].cpp
+**/Codepy.py
+**/Codepy[1-9].py
+
+**/CppProperties.json
+**/ou
+**/out.txt
+**/out2
+**/google decode.py
