@@ -1,18 +1,14 @@
 #include "../Header.cpp"
-
 /*
- 
 a ancestor of b
 
 [start[a], start[b]]
-
 
 else
 
 [end[a], start[b]] + lca(a, b)
 
 */  
-
 ll block;
 vl ans;
 vl el(1e6+2, 0);

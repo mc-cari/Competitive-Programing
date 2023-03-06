@@ -1,6 +1,5 @@
 #include "../Header.cpp"
 
-
 // stores smallest prime factor for every number
 int spf[MAXN];
  

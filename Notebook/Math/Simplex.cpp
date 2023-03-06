@@ -1,21 +1,5 @@
 #include "../Header.cpp"
 
-using namespace std;
-
-typedef int ll;
-typedef unsigned long long ull;
-typedef vector<ll> vl;
-typedef pair<ll,ll> pll;
-typedef vector<pll> vp;
-typedef long long db;
-#define INF 1e17
-#define EPS 1e-7
-#define ALL(x) x.begin() , x.end()
-#define ALLR(x) x.rbegin() , x.rend()
-#define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
-#define PI acos(-1.0)
- 
- 
 #define fore(i,a,b) for(int i=a,ThxDem=b;i<ThxDem;++i)
  
 namespace Simplex {

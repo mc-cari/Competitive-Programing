@@ -1,11 +1,7 @@
 #include "../Header.cpp"
 
 struct BIT2D { // BIT = binary indexed tree (a.k.a. Fenwick Tree)
-    /*
-
-       ********All Index starts at 1**********
-
-    */
+    /*********All Index starts at 1***********/
     vector<vector<int> > bit;
     BIT2D(int n,int m) { bit.assign(n+1, vector<int>(m+1,0)); }
     // prefix sum query (sum in range 1 .. k)

@@ -1,8 +1,4 @@
 #include "../Header.cpp"
-/*
-beats
-node(suma, max, max2, cant_max)
-*/
 
 struct SegmentTree
 {

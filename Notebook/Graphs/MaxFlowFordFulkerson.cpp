@@ -1,7 +1,5 @@
-// C++ program for finding minimum cut using Ford-Fulkerson 
 #include "../Header.cpp"
   
-
 // minimo cubrimiento aristas = min-cut
 // extremos de aristas cortadas que no son s ni t
 // max conj, ind = nodos - minimo cubrimiento aristas

@@ -1,9 +1,8 @@
 #include "../Header.cpp"
 
-
 // limit
 log(valor maximo/precision)/log(2)
-                            /log(3/2) //para ternaria
+                            /log(3/2) //for ternary
 
 ll l = 0, r = n-1, res = -1;
 while(l <= r)

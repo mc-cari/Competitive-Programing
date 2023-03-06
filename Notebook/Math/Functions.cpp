@@ -6,8 +6,6 @@ auto stop = high_resolution_clock::now();
 auto duration = duration_cast<microseconds>(stop - start1);
 //cerr << duration.count()/1000 << "ms" << endl;
 
-
-
 default_random_engine generator;
 uniform_real_distribution<double> distribution(0,LLONG_MAX);
 ll num = distribution(generator);

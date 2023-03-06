@@ -1,3 +1,4 @@
+#include "../Header.cpp"
 //Euler Tour
 vl L, R, d, c;
 ll num = -1;

@@ -1,22 +1,5 @@
-#include<bits/stdc++.h>
-#pragma GCC optimize("Ofast")
-using namespace std;
-typedef long long ll;
-typedef unsigned long long ull;
-typedef vector<ll> vl;
-typedef pair<ll,ll> pll;
-typedef vector<pll> vp;
-typedef long double db;
-#define INF LLONG_MAX
-#define EPS 1e-12
-#define ALL(x) x.begin() , x.end()
-#define ALLR(x) x.rbegin() , x.rend()
-#define UNIQUE(c) (c).resize(unique(ALL(c)) - (c).begin())
-#define PI acos(-1.0)
-#define pb push_back
-#define rep(i, n) for (ll i = 0; i < (int)n; i++)
-#define repx(i, a, b) for (int i = (int)a; i < (int)b; i++)
-#define invrep(i,b,a) for(int i = b; i >= a; --i)
+#include "../Header.cpp"
+
 
 ll k, n;
 string s;
