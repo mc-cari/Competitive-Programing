@@ -84,64 +84,23 @@ int sup[55], inf[55];
  
 int main(){
     int n, q;
-    ll ans = 0;
-    cin >> n >> q;
-    for (int i = 0; i < n; ++i) {
-        sup[i] = n;
-        inf[i] = 1;
-    }
-    for (int j = 0; j < q; ++j) {
-        int t, l, r, v;
-        cin >> t >> l >> r >> v;
-        if (t == 1){
-            for (int i = l - 1; i <= r - 1; ++i) {
-                inf[i] = max(inf[i], v);
-            }
-        }else{
-            for (int i = l - 1; i <= r - 1; ++i) {
-                sup[i] = min(sup[i], v);
-            }
-        }
-    }
+
     vector<Edge>ee;
     Edge E;
- 
- 
-    for(int i = 0; i < n; i++)
-    {
-        E.from = 0;
-        E.to = i + 2;
-        E.capacity = 1;
-        E.cost = 0;
-        ee.push_back(E);
-        for(int j = inf[i]; j <= sup[i]; j++)
-        {
-            
-            E.from = i + 2;
-            E.to = j + n + 1;
-            E.capacity = 1;
-            E.cost = 0;
-            ee.push_back(E);
-        }
-    }
-    ll id = n + 2 + n;
-    for(int i = n + 2; i <= n + 2 + n - 1; i++)
-    {
-        for(int j = 0; j < n; j++)
-        {
-            E.from = i;
-            E.to = id;
-            E.capacity = 1;
-            E.cost = 2 * j + 1;
-            ee.push_back(E);
-            E.from = id;
-            E.to = 1;
-            E.capacity = 1;
-            E.cost = 0;
-            ee.push_back(E);
-            id++;
-        }
-    }
+
+
+    E.from = i;
+    E.to = id;
+    E.capacity = 1;
+    E.cost = 2 * j + 1;
+    ee.push_back(E);
+    E.from = id;
+    E.to = 1;
+    E.capacity = 1;
+    E.cost = 0;
+    ee.push_back(E);
+    id++;
+
     ans = min_cost_flow(2 * n + n*n + 10, ee, n, 0, 1);
     cout << ans << "\n";
  
