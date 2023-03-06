@@ -99,7 +99,7 @@ db perimeter(point a, point b, point c) {
 
 db area(db ab, db bc, db ca) {
   // Heron's formula, split sqrt(a * b) into sqrt(a) * sqrt(b); in implementation
-    db s = 0.5 * perimeter(ab, bc, ca);
+    db s = 0.5 * perimeter(ab + bc + ca);
     return sqrt(s) * sqrt(s - ab) * sqrt(s - bc) * sqrt(s - ca); }
 
 db area(point a, point b, point c) {
