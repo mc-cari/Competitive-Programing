@@ -15,7 +15,6 @@ void dfs(int t)
               depht[it]=depht[t]+1;
               dfs(it);
             }
-            
         }
         nodes.pop_back();
     }

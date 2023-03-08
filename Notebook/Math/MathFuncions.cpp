@@ -5,7 +5,6 @@ ll mul(ll x, ll y) { if (x > MX / y) return MX; return x * y; }
 ll sums(ll x, ll y) { if (MX - x < y) return MX; return x + y; }
 
 const int N = 1e5 + 10, LOG_A = 31;
-
 ll basis[LOG_A], sz;
 
 // O(N * LOG), base that produces the maximum
@@ -81,8 +80,6 @@ forn(i, MAXN){
     forn(j, MAXN)
         Bell[i] = (Bell[i] + Stirling[i][j]) %MOD;
 }
-
-
 
 //grundy
 int tag[n*n];
