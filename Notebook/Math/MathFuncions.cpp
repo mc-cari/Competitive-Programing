@@ -30,6 +30,21 @@ forr(bitmask, 1, (1<<n)){
     ans = (ans + (resta ? 1 : M-1)*cuenta(bitmask) %M) %M;
 }
 
+// phi
+
+repx(i,2,MAXN) if(!spf[i]) for(int j=i;j<MAXN;j+=i) if(!spf[j])spf[j]=i;
+ 
+repx(i,2,MAXN){
+    int x=i,res=i;
+    while(x>1){
+        int now=spf[x];
+        while(spf[x]==now)x/=now;
+        res/=now;
+        res*=now-1;
+    }
+    phi[i]=res;
+}
+
 // Catalan number
 
 /*
