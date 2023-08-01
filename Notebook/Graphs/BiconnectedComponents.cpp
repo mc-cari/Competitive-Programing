@@ -33,8 +33,7 @@ void dfs(int u, int p, int d) { // (node, parent, depth)
         if (D[v] == -1) { // exploring a new, unvisited child node            
             s.emplace(u,v); // add edge to stack
             dfs(v, u, d+1); // explore recursively v's subtree
-            // 1) detect articulation points and biconnected components
-            if (p == -1) { // 1.1) special case: if u is root
+            // 1) detect a root
                 if (++num_root_children == 2) {
                     // we detected that root has AT LEAST 2 children
                     // therefore root is an articulation point
