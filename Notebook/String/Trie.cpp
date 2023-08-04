@@ -4,20 +4,31 @@
 //https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Material/Strings/Trie.cpp
 
 
+const int MAX = 2e5;
 struct Trie
 {
-    static const int MAX = 1e6;
-    int N[MAX][26] = {0}, S[MAX] = {0}, c = 0;
-    void add(string s, int a = 1)
+  
+  int c = 0;
+  vector<vector<int>> N;
+  vector<int> S;
+
+  Trie()
+  {
+    N.assign(MAX, vector<int>(26, 0));
+    S.assign(MAX, 0);
+    c = 0;
+  }
+
+  void add(string s, int a = 1)
+  {
+    int p = 0; S[p] += a;
+    for (char l : s)
     {
-        int p = 0; S[p] += a;
-        for (char l : s)
-        {
-            int t = l - 'a';
-            if (!N[p][t]) N[p][t] = ++c;
-            S[p = N[p][t]] += a;
-        }
+      int t = l - 'a';
+      if(!N[p][t]) N[p][t] = ++c;
+      S[p = N[p][t]] += a;
     }
+  }
 };
 
 struct TrieXOR

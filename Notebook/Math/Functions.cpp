@@ -20,18 +20,17 @@ output.open("divisibility-tree.out");
 output<<" ";  
 output.close();
 
-// suma subconjuntos
+// subset sum
 for i = 0 to n-1
-for mask = 0 to (1«n) - 1
-if (mask & (1«i))
-dp(mask) += dp(mask - (1«i))
+    for mask = 0 to (1«n) - 1
+        if (mask & (1«i))
+            dp(mask) += dp(mask - (1«i))
 
-// suma divisores
+// divisor sum
 for p ∈ P
-for x ∈ S (DE MENOR A MAYOR)
-if (p divide a x)
-dp(x) += dp(x / p)
-
+    for x ∈ S // Increasing order
+        if (p divide a x)
+            dp(x) += dp(x / p)
 
 // hash pairs unrderedmap<pll,ll,hash_pair>
 struct hash_pair { 
@@ -43,40 +42,6 @@ struct hash_pair {
         return hash1 ^ hash2; 
     } 
 }; 
-int maxlog2(int x) //potecncia de 2 mayor que es menor o igual a x
-{
-    // ll maxlog = 63 - __builtin_clzll(x);
-    int maxlog = 31 - __builtin_clz(x);
-    return maxlog;
-}
-int A[10000];//Set con reset O(1),Tambien con Map
-int t=1;
-bool fin(int x)
-{
-    return A[x]==t;
-}
-void borrar()
-{
-    t++;
-}
-void inse(int x)
-{
-    A[x]=t;
-}
-int res(int a,int b)
-{
-    int c=1,d;
-    for(int i=0;i<b;i++)
-    {
-        c*=10;
-    }
-    d=c*10;
-    a=a-(a-a%d);
-    a=a-(a%c);
-    a=a/c;
-    return a;
-}
-
 
 //propagate val in mask to all its submask
 for (int i = 0; i < p; i++)
@@ -90,6 +55,10 @@ for (int i = 0; i < p; i++)
     }
 }
 
+// Iterate over non empty subsets of bitmask
+for(int s=m;s;s=(s-1)&m) // Decreasing order
+for (int s=0;s=s-m&m;) 	 // Increasing order
+
 // O(3^n)
 rep(m, (1 << n)){
     // 2^k k: number of bits in m
@@ -102,6 +71,14 @@ rep(m, (1 << n)){
 
 int bit_opst(ll N,ll S)
 {
+    
+    // Return the numbers the numbers of 1-bit in x
+    int __builtin_popcount (unsigned int x)
+    // Returns the number of trailing 0-bits in x. x=0 is undefined.
+    int __builtin_ctz (unsigned int x)
+    // Returns the number of leading 0-bits in x. x=0 is undefined.
+    int __builtin_clz (unsigned int x)
+
     //Obtain the remainder (modulo) of S when it is divided by N (N is a power of 2)
     return S &(N -1);
     //Determine if S is a power of 2.
@@ -140,6 +117,21 @@ kol(r+1, i) - kol(l, i);
 
 
 // old implemented algorithms:
+
+int A[10000];//Set con reset O(1),Tambien con Map
+int t=1;
+bool fin(int x)
+{
+    return A[x]==t;
+}
+void borrar()
+{
+    t++;
+}
+void inse(int x)
+{
+    A[x]=t;
+}
 
 int gcd(int a, int b)
 {
