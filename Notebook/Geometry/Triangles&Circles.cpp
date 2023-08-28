@@ -5,12 +5,9 @@
 db DEG_to_RAD(db d) { return d * PI / 180.0; }
 db RAD_to_DEG(db r) { return r * 180.0 / PI; }
 
-
-
 //sweepline rotating a circle around a point
 // how many points are in circle radius r
 // alpha = atan2(point - center) +- acos(dist/2r)
-
 
 struct point { db x, y;   
     point() { x = y = 0.0; }                      
@@ -288,5 +285,4 @@ tuple<db, db, db> findCircle(db x1, db y1, db x2, db y2, db x3, db y3)
     //cout << "Centre = (" << h << ", " << k << ")" << endl; 
     //cout << "Radius = " << r; 
     return make_tuple(h, k, r);
-} 
-
+}

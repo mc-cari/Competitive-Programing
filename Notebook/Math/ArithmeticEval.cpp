@@ -92,11 +92,8 @@ int main(){
 				ans++;
 				//cout << i << " " << j <<" "<<eval(i,j)<< "\n";
 			}
-	
+
 		}
 	}
 	cout << ans << "\n";
-	
-	cerr << "\nTime elapsed: " << 1000 * clock() / CLOCKS_PER_SEC << "ms\n";
-	return 0;
 }

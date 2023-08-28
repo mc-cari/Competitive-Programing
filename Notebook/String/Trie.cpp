@@ -1,8 +1,6 @@
 #include "../Header.cpp"
 
-
 //https://github.com/BenjaminRubio/CompetitiveProgramming/blob/master/Material/Strings/Trie.cpp
-
 
 const int MAX = 2e5;
 struct Trie

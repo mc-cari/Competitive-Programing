@@ -7,7 +7,6 @@ a ancestor of b
 else
 
 [end[a], start[b]] + lca(a, b)
-
 */  
 ll block;
 vl ans;

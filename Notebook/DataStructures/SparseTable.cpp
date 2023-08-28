@@ -36,15 +36,3 @@ struct SparseTable
       return l;
     }
 };
-
-int main()
-{
-	ios::sync_with_stdio(0);
-	cin.tie(0);
-	ll n,m,x,y,h,v;
-
-    vector<int>A = {7,10,19,3,1,2,7,7};
-    SparseTable SP(A);
-    cout<<SP.op(1,3)<<endl;
-    return 0;
-}

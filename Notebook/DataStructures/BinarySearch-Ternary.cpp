@@ -8,7 +8,8 @@ ll l = 0, r = n-1, res = -1;
 while(l <= r)
 {
     ll p = (l + r) / 2;
-    if(c[p] <= m)l = p+1;
+    if(c[p] <= m)
+        l = p+1;
     else r = p-1;
 }
 

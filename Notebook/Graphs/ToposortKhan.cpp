@@ -42,7 +42,6 @@ void toposort()
     }
 }
 
-
 int main()
 {
 	ll v,x,y,e,a,b,in=0;
@@ -80,8 +79,4 @@ int main()
                 q.push(it);
         }
     }
-
-
-
-	return 0;
 }

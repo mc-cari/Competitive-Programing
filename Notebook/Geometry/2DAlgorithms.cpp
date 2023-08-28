@@ -1,9 +1,7 @@
 #include "../Header.cpp"
 
 double DEG_to_RAD(double d) { return d*PI / 180.0; }
-double RAD_to_DEG(double r) { return r*180.0 / PI; }
-
-//#define db long long    
+double RAD_to_DEG(double r) { return r*180.0 / PI; }  
 
 struct point { db x, y;   
     point() { x = y = 0.0; }                      
@@ -255,15 +253,4 @@ int SegmentIntersection(point a1, point a2, point b1, point b2, point& ans, poin
         return 1;
     }
     return 0;
-}
-
-
-int32_t main() {
-  vec a(1,3);
-  cout<<30*PI/180<<endl;
-  a = rotate(a, 30*PI/180);
-  cout<<a.x<<" "<<a.y<<endl;
-
-  cerr << "\nTime elapsed: " << 1000 * clock() / CLOCKS_PER_SEC << "ms\n";
-  return 0;
 }

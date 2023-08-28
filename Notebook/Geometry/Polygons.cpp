@@ -275,21 +275,3 @@ for(int i = 0; i < n; i++)
         ans %= m;
     }
 }
-
-
-
-int main() {
-  point a;
-  ll n;
-  vector<point>Q;
-  cin>>n;
-  for(ll i=0;i<n;i++)
-  {
-    cin>>a.x>>a.y;
-    Q.push_back(a);
-  }
-  Q.push_back(Q[0]);
-  cout<<area(Q);
-  cerr << "\nTime elapsed: " << 1000 * clock() / CLOCKS_PER_SEC << "ms\n";
-  return 0;
-}

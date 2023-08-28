@@ -8,10 +8,10 @@ int main()
     cin >> v >> e >> r;
     pll h;
     vl d(v, INF);
-    d[r] = 0;//nodo de inicio
+    d[r] = 0;
     vector<vector<pll> > g(v, vector<pll> (0));
 
-	for(int i = 0 ;i < e; i++)
+	for(int i = 0 ; i < e; i++)
     {
         cin >> x >> y >> w;
         h.first = y;
@@ -56,14 +56,12 @@ int main()
     while (!q.empty()) {
         int u = q.front(); q.pop(); in_queue[u] = 0; // pop from queue
         for (auto it : g[u]) {                 // C++17 style
-        if (dist[u]+it.first >= dist[it.second]) continue;        // not improving, skip
-        dist[it.second] = dist[u]+it.first;                       // relax operation
-        if (!in_queue[it.second]) {                        // add to the queue
-            q.push(it.second);                               // only if v is not
-            in_queue[it.second] = 1;                         // already in the queue
-        }
+            if (dist[u]+it.first >= dist[it.second]) continue;        // not improving, skip
+            dist[it.second] = dist[u]+it.first;                       // relax operation
+            if (!in_queue[it.second]) {                        // add to the queue
+                q.push(it.second);                               // only if v is not
+                in_queue[it.second] = 1;                         // already in the queue
+            }
         }
     }
-    
-	return 0;
 }

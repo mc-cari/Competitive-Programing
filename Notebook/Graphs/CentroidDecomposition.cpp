@@ -24,41 +24,29 @@ void cdfs(int x=0, int f=-1, int sz=-1){ // O(nlogn)
 void centroid(){memset(tk,false,sizeof(tk));cdfs();}
 
 int main(){
-  ios_base::sync_with_stdio(0);
-  cin.tie(0);
-
-  ll t;
-  cin >> t;
+  ll t; cin >> t;
   for(int T = 1; T <= t; T++) {
-    
     memset(memo, -1, sizeof(memo));
     ll x;
     cin >> N >> K;
-    B.clear();
-    ac.clear();
-    ac.push_back(0);
-    for(int i = 0; i < N; i++)
-    {
+    B.clear(); ac.clear(); ac.push_back(0);
+    for(int i = 0; i < N; i++){
       cin >> x;
-      B.push_back(x);
-      ac.push_back(x);
+      B.push_back(x); ac.push_back(x);
       ac[i+1] += ac[i];
     }
     ll acum = 0;
-    for(int i = 0; i < N; i++)
-    {
+    for(int i = 0; i < N; i++){
         acum += B[i];
         if(acum == ac[i+1])cout<<"1\n";
         else cout <<"0\n";
     }
-
     ll ans = INF;
-    for(int i = 0; i < N; i++)
-    {
+    for(int i = 0; i < N; i++){
       ans = min(ans, dp(i, 0, 0));
     }
     if(ans >= INF) ans = -1;
     cout << "Case #" << T << ": ";
     cout << ans << "\n";
-  }
+  } 
 }
