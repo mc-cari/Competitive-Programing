@@ -6,4 +6,4 @@ __Notebook__: Implementation and adaptation of algorithms that I use in competit
 
 __Solutions__: Solutions to problems of various online judges (online systems to test programs in programming contests).
 
-__Contests__: Code of problems solved in competitive programming competitions.
+__Contests__: Code of problems solved in programming competitions.
