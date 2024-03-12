@@ -27,7 +27,7 @@ struct SegmentTree
 	}
 	ll qry(int n, int l, int r, int i, ll j)
 	{
-		if(r < i || j < l) return 0;
+		if(r < i || j < l) return INF;
 		if(i <= l && r <= j) return ST[n];
 
 		return op(qry(2*n,l,(l+r)/2,i,j), qry(2*n+1,(l+r)/2+1,r,i,j));
