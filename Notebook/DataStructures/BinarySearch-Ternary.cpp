@@ -26,7 +26,7 @@ rep(i, 101)
     mini = min(mini, (c1+c2)/2.0);
 }
 
-// non continuous
+// non continuous, only work if every value is different
 ll = 1,r = m, mini = 1e17;
 while(l <= r)
 {
