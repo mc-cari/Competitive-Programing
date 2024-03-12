@@ -115,6 +115,24 @@ ll kol(ll n, ll i)
 }
 kol(r+1, i) - kol(l, i);
 
+// Gradien descent
+db find(db x, int dir)
+{
+    rep(i, 10)
+    {
+        db x2 = x + dir * 0.01 * der(x);
+        x = x2;
+    }
+    while(abs(der(x)) > 0.001 )
+    {
+        db x2 = x + dir * 0.0001 * der(x);
+        x = x2;
+    }
+
+    return x;
+}
+
+
 
 // old implemented algorithms:
 

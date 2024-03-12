@@ -2,10 +2,10 @@
 
 #include "../Header.cpp"
 
-
 class HLD
 {
     ST st;
+    // ancestor, heavy, depht, component parent, index in ST
     vi A, H, D, R, P;
 
     int dfs(vector<vi> &G, int u)
@@ -25,11 +25,11 @@ class HLD
         for (; R[u] != R[v]; v = A[R[v]])
         {
             if (D[R[u]] > D[R[v]]) swap(u, v);
-            op(P[R[v]], P[v] + 1);
+            op(P[R[v]], P[v] );
         }
         if (D[u] > D[v]) swap(u, v);
-        op(P[u], P[v] + 1);                // VALUES ON VERTEX
-        // op(P[u] + 1, P[v] + 1);         // VALUES ON EDGE
+        op(P[u], P[v]);                // VALUES ON VERTEX
+        // op(P[u] + 1, P[v]);         // VALUES ON EDGE
     }
 
 public:
@@ -84,12 +84,12 @@ public:
         for (; R[u] != R[v]; v = A[R[v]])
         {
             if (D[R[u]] > D[R[v]]) swap(u, v), d = !d;
-            if (d) ans1 = node(st.query(P[R[v]], P[v] + 1), ans1);
-            else ans2 = node(st.query(P[R[v]], P[v] + 1), ans2);
+            if (d) ans1 = node(st.query(P[R[v]], P[v] ), ans1);
+            else ans2 = node(st.query(P[R[v]], P[v] ), ans2);
         }
         if (D[u] > D[v]) swap(u, v), d = !d;
-        if (d) ans1 = node(st.query(P[u], P[v] + 1), ans1);
-        else ans2 = node(st.query(P[u], P[v] + 1), ans2);
+        if (d) ans1 = node(st.query(P[u], P[v] ), ans1);
+        else ans2 = node(st.query(P[u], P[v] ), ans2);
         ans1.sw(); return node(ans1, ans2);
     }
     HLD(vector<vi> &G, int n) : A(n), st(n), D(n), R(n), P(n)

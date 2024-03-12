@@ -30,6 +30,8 @@ ll Comb(ll n, ll k){
     return F[n]*FI[k] %M *FI[n-k] %M;
 }
 
+// M balls in N spaces Comb(M + N-1, N-1)
+
 // combinatury precalc
 ll C[MAXN][MAXK];
 // ...

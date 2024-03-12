@@ -22,6 +22,57 @@ void insertVector(int mask) {
 	}
 }
 
+
+struct Cientific{
+  ll val;
+  ll exp;
+  Cientific(ll val, ll exp)
+  {
+    this->val = val;
+    this->exp = exp;
+  }
+
+  Cientific()
+  {
+    val = 1;
+    exp = 0;
+  }
+
+  Cientific operator*(Cientific &b)
+  {
+    Cientific p(val, exp);
+
+    p.val = (p.val * b.val);
+    p.exp += b.exp;
+
+    if(p.val >= 1e9)
+    {
+      p.exp++;
+      p.val /= 1000000000;
+    }
+    return p;
+  }
+  bool operator<(const Cientific& rhs) const {
+    if(exp == rhs.exp)
+      return val < rhs.val;
+    return exp < rhs.exp;
+  }
+
+  bool operator==(const Cientific& rhs) const {
+    return exp == rhs.exp && val == rhs.val;
+  }
+};
+
+Cientific expmod2(Cientific b, ll e){
+    Cientific ans(1, 0);
+    while(e){
+        if(e&1) ans = (ans*b);
+        b = (b*b); e >>= 1;
+    }
+    return ans;
+}
+
+
 // inclusion, exclusion
 ll ans = 0;
 forr(bitmask, 1, (1<<n)){

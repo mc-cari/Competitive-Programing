@@ -53,5 +53,36 @@ int main()
 
     }
 
+    vector<vl>g(n, vl(m)), v(n, vl(m, 0)), d(n, vl(m, 0));
+    rep(i, n)
+        rep(j, m)
+        {
+            cin >> g[i][j];
+        }
+
+
+    // implicit
+    vl dx = {1, -1, 0, 0};
+    vl dy = {0, 0, 1, -1};
+
+    queue<pll> q;
+    q.push({0, 0});
+    while(!q.empty())
+    {
+        ll x, y;
+        tie(x, y) = q.front();
+        q.pop();
+
+        if(vis[x][y])continue;
+        rep(z, 4)
+        {
+            ll nx = x + dx[z], ny = y + dy[z];
+
+            if(nx < 0 || ny < 0 || nx >= n || ny >= m) continue;
+            q.push({nx, ny});
+        }
+
+    }
+
 	return 0;
 }

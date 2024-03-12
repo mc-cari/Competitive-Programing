@@ -3,7 +3,7 @@
 int main()
 {
 	vl d(v, INF);
-	priority_queue<pll, vp, greater<pll> > q; //from low to high
+	priority_queue<pll, vp, greater<pll> > q;
 	ll s, t;
 	q.push({0, s});
 	d[s] = 0;	
