@@ -9,7 +9,7 @@ ll maxlog2(ll x){
 
 struct SparseTableLCA
 {
-    ll maxlg;
+    int maxlg;
     vector<vl >SP;
     vector<vl >MN;
     vl D;

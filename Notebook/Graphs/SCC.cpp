@@ -52,7 +52,7 @@ int main() {
         g[u].push_back(v);
     }
     // run Tarjan's SCC 
-    dfs_num.assign(n, 0); dfs_low.assign(n, 0); visited.assign(n, 0);
+    dfs_num.assign(n, -1); dfs_low.assign(n, 0); visited.assign(n, 0);
     while (!St.empty()) St.pop();
     cont = numSCC = 0;
     for (int u = 0; u < n; ++u)

@@ -3,7 +3,31 @@
 vl depht, v, nodes;
 vl ind;
 vector <vl>g;
+
+
+ll dp[100000];
+
 void dfs(int t)
+{
+    if(!v[t]){
+        nodes.push_back(t);
+        v[t]=1;
+        for(auto it : g[t]){
+
+            if(!v[it])
+            {
+              depht[it]=depht[t]+1;
+              dfs(it);
+            }
+        }
+        nodes.pop_back();
+    }
+}
+
+
+vector<ll> tam();
+
+void dp(int t)
 {
     if(!v[t]){
         nodes.push_back(t);
@@ -52,6 +76,7 @@ int main()
         }
 
     }
+
 
     vector<vl>g(n, vl(m)), v(n, vl(m, 0)), d(n, vl(m, 0));
     rep(i, n)

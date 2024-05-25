@@ -1,8 +1,14 @@
 **/.vscode
 
 **/in
-**/out
+**/out*
 **/a.out
+**/brute
+**/code
+**/correctAnswer
+**/gen
+**/input_file
+**/myAnswer
 
 **/a
 **/a.exe
@@ -11,7 +17,5 @@
 **/Codepy[1-9].py
 
 **/CppProperties.json
-**/ou
-**/out.txt
-**/out2
+**/google decode.py
 **/google decode.py
