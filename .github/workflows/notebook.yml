@@ -36,7 +36,7 @@ jobs:
       - name: Generate PDF Notebook
         run: notebook-generator ./Notebook --author "Mauricio Cari Leal" --size 9 --image ./.Assets/UC-Logo
 
-       - name: Configure Git
+      - name: Configure Git
         run: |
           git config --global user.name 'github-actions[bot]'
           git config --global user.email 'github-actions[bot]@mc-cari.github.io'
