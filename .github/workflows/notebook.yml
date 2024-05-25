@@ -31,7 +31,7 @@ jobs:
         run: sudo apt-get install -y aptitude
 
       - name: Install TeX Live and extra packages
-        run: aptitude install texlive texlive-latex-extra
+        run: sudo aptitude install texlive texlive-latex-extra
       
       - name: Generate PDF Notebook
         run: notebook-generator ./Notebook --author "Mauricio Cari Leal" --size 9 --image ./.Assets/UC-Logo
