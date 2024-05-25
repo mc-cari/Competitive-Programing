@@ -1,0 +1,30 @@
+name: Notebook Workflow
+
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - 'Notebook/**'
+
+jobs:
+  generate-notebook:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '20'
+
+      - name: Install aptitude
+        run: apt-get install -y aptitude
+
+      - name: Install TeX Live and extra packages
+        run: aptitude install texlive texlive-latex-extra
+      
+      - name: Generate PDF Notebook
+        run: notebook-generator ./Notebook --author "Mauricio Cari Leal" --size 9 --image ./.Assets/UC-Logo
