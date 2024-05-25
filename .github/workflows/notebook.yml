@@ -20,8 +20,11 @@ jobs:
         with:
           node-version: '20'
 
+      - name: Update and install prerequisites
+        run: sudo apt-get update
+        
       - name: Install aptitude
-        run: apt-get install -y aptitude
+        run: sudo apt-get install -y aptitude
 
       - name: Install TeX Live and extra packages
         run: aptitude install texlive texlive-latex-extra
