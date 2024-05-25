@@ -29,6 +29,9 @@ jobs:
 
       - name: Install TeX Live and extra packages
         run: sudo aptitude install -y texlive texlive-latex-extra
+
+      - name: Install notebook generator
+        run: npm install -g notebook-generator
       
       - name: Generate PDF Notebook
         run: notebook-generator ./Notebook --author "Mauricio Cari Leal" --size 9 --image ./.Assets/UC-Logo
