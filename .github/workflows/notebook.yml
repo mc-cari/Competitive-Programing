@@ -6,6 +6,7 @@ on:
       - master
     paths:
       - 'Notebook/**'
+  workflow_dispatch:
 
 jobs:
   generate-notebook:
@@ -22,6 +23,9 @@ jobs:
 
       - name: Update and install prerequisites
         run: sudo apt-get update
+        
+      - name: Update and install prerequisites
+        run: sudo apt-get install -y aptitude
         
       - name: Install aptitude
         run: sudo apt-get install -y aptitude
